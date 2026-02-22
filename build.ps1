@@ -63,6 +63,7 @@ foreach ($file in $texFiles) {
     # ----------------------------
     pandoc $file.FullName -s --mathjax `
       --template=templates/template.html `
+      --include-in-header=templates/mathjax-macros.html `
       --lua-filter=filters/theorem_blocks_to_headings.lua `
       -M "title=$name (MathJax Version)" `
       -M "basename=$name" `

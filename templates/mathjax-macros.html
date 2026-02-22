@@ -1,0 +1,125 @@
+<script>
+/*
+  Starter MathJax macro config for WyStronaut/website
+  - Mirrors common custom commands from zeramorphic/cambridge-maths-notes/util.sty
+  - Safe, incremental starter: focuses on macros likely to appear in converted HTML math
+  - Add more as needed when new unresolved macros show up
+
+  Place this BEFORE the MathJax script tag (or inject via pandoc --include-in-header).
+*/
+
+window.MathJax = {
+  tex: {
+    // Usually not needed for standard combined MathJax bundles, but harmless if present.
+    // configmacros is the extension that enables tex.macros / tex.environments config.
+    packages: {'[+]': ['configmacros']},
+
+    macros: {
+      /* ---------- Requested extra macro ---------- */
+      // LaTeX source equivalent: \newcommand{\abs}[1]{\lvert #1 \rvert}
+      abs: ["\\lvert #1 \\rvert", 1],
+
+      /* ---------- Core macros already seen in generated IA/NS MathJax HTML ---------- */
+      st: "\\text{ s.t. }",
+      genset: ["\\left\\langle{} #1 \\right\\rangle", 1],
+      HCF: "\\operatorname{HCF}",
+      LCM: "\\operatorname{LCM}",
+      Im: "\\operatorname{Im}",   // util.sty renews \Im
+      Re: "\\operatorname{Re}",   // util.sty renews \Re
+
+      /* ---------- util.sty custom notation macros (simple wrappers) ---------- */
+      ddempty: "\\mathrm{d}",
+      dn: ["\\mathrm{d}^{#1}#2", 2],
+      contradiction: "\\#",
+      ngenset: ["\\left\\langle\\!\\left\\langle{} #1 \\right\\rangle\\!\\right\\rangle", 1],
+      midd: "\\,\\middle|\\,",
+      nhat: "\\hat{\\mathbf{n}}",
+      rdot: "\\dot{\\mathbf{r}}",
+      rddot: "\\ddot{\\mathbf{r}}",
+      transpose: "\\intercal",
+      acts: "\\curvearrowright",
+      adjugate: ["\\widetilde{#1}", 1],
+      stcomp: ["{#1}^{c}", 1],
+      convdist: "\\xrightarrow{d}",
+      convprob: "\\xrightarrow{\\mathbb{P}}",
+      wildcard: "{}\\cdot{}",
+      sstar: "{\\star\\star}",
+      Mob: "\\text{M\\\"ob}",
+      Chat: "\\widehat{\\mathbb C}",
+      cop: "\\mathrm{op}",
+      hhat: ["\\hat{\\hat{#1}}", 1],
+
+      /* ---------- Common probability / expectation wrappers ---------- */
+      prob: ["\\mathbb{P}\\left(#1\\right)", 1],
+      psub: ["\\mathbb{P}_{#1}\\left(#2\\right)", 2],
+      psubx: ["\\mathbb{P}_{x}\\left(#1\\right)", 1],
+      expect: ["\\mathbb{E}\\left[#1\\right]", 1],
+      esub: ["\\mathbb{E}_{#1}\\left[#2\\right]", 2],
+      esubx: ["\\mathbb{E}_{x}\\left[#1\\right]", 1],
+      Var: ["\\Varop\\left(#1\\right)", 1],
+      Varsub: ["\\Varop_{#1}\\left(#2\\right)", 2],
+      Cov: ["\\Covop\\left(#1\\right)", 1],
+      Corr: ["\\Corrop\\left(#1\\right)", 1],
+      Markov: ["\\Markovop\\left(#1\\right)", 1],
+
+      /* ---------- Pairing / inner-product style wrappers ---------- */
+      inner: ["\\left\\langle #1\\right\\rangle", 1],
+
+      /* ---------- Operator declarations from util.sty ---------- */
+      vecspan: "\\operatorname{span}",
+      ord: "\\operatorname{ord}",
+      Sym: "\\operatorname{Sym}",
+      nullity: "\\operatorname{null}",
+      Orb: "\\operatorname{Orb}",
+      Stab: "\\operatorname{Stab}",
+      ccl: "\\operatorname{ccl}",
+      Varop: "\\operatorname{Var}",
+      Covop: "\\operatorname{Cov}",
+      Corrop: "\\operatorname{Corr}",
+      Markovop: "\\operatorname{Markov}",
+      adj: "\\operatorname{adj}",
+      sgn: "\\operatorname{sgn}",
+      diam: "\\operatorname{diam}",
+      id: "\\operatorname{id}",
+      Log: "\\operatorname{Log}",
+      Iff: "\\operatorname{I}",
+      IIff: "\\operatorname{I\\!I}",
+      artanh: "\\operatorname{artanh}",
+      Aut: "\\operatorname{Aut}",
+      Hom: "\\operatorname{Hom}",
+      graft: "\\operatorname{graft}",
+      Gal: "\\operatorname{Gal}",
+      Instr: "\\operatorname{Instr}",
+      // esssup is declared with * in LaTeX (limits-style); this approximation is usually fine:
+      esssup: "\\operatorname*{ess\\ sup}",
+      dom: "\\operatorname{dom}",
+      fchar: "\\operatorname{char}",
+      code: "\\operatorname{code}",
+      im: "\\operatorname{im}",
+      coker: "\\operatorname{coker}",
+      coim: "\\operatorname{coim}",
+      End: "\\operatorname{End}",
+      ob: "\\operatorname{ob}",
+      mor: "\\operatorname{mor}",
+      cod: "\\operatorname{cod}",
+      Spec: "\\operatorname{Spec}",
+      mSpec: "\\operatorname{mSpec}",
+      Proj: "\\operatorname{Proj}",
+      res: "\\operatorname{res}",
+      Con: "\\operatorname{Con}",
+      cf: "\\operatorname{cf}",
+      ran: "\\operatorname{ran}",
+      Fn: "\\operatorname{Fn}"
+
+      /*
+        Intentionally omitted (for starter simplicity or because they depend on other custom macros/packages):
+        - vu, nhat(via \vu), rdot/rddot exact forms using \vb from physics package (we used \\mathbf fallback)
+        - mathhuge, symmdiff, bound (can be added later if they appear unresolved)
+        - divergence/\div redefinitions via \DeclareDocumentCommand (complex parser behavior)
+        - \ceil, \floor, \Brackets from \DeclarePairedDelimiter (better to define individually if encountered)
+        - TikZ / theorem / text formatting commands (not MathJax macros)
+      */
+    }
+  }
+};
+</script>
