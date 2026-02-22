@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>07_countability (MathML Version)</title>
+  <style>
+    /* Styles will be inserted here */
+  </style>
+</head>
+<body>
+
+<a href="#main">Skip to main content</a>
+
+<header>
+  <h1>07_countability (MathML Version)</h1>
+</header>
+
+<nav aria-label="Page Navigation">
+  <ul>
+    <li><a href="../">Back to Generated Index</a></li>
+        <li><a href="../mathjax/07_countability-mathjax.html">Switch to MathJax Version</a></li>
+          </ul>
+</nav>
+
+<main id="main">
+<h2 id="basic-properties">Basic properties</h2>
+<p>We have a notion of ‘size’ for finite sets. Is there such an
+analogous notion for infinite sets? We will say that a set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is countable if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is finite, or it bijects with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℕ</mi><annotation encoding="application/x-tex">\mathbb N</annotation></semantics></math>.
+Equivalently, we can list out the elements of the set, and each element
+will appear in the list. Here are some examples.</p>
+<ol>
+<li><p>Clearly any finite set is countable.</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℕ</mi><annotation encoding="application/x-tex">\mathbb N</annotation></semantics></math>
+is countable.</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>
+is countable, let us construct the list of numbers
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>−</mi><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mi>−</mi><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mi>−</mi><mn>4</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">0, 1, -1, 2, -2, 3, -3, 4, -4, \dots</annotation></semantics></math></p></li>
+</ol>
+<p>It makes sense now to consider two sets to have the same size if they
+biject with each other.</p>
+<h3>Proposition</h3>
+<p>A set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is countable if and only if it injects into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℕ</mi><annotation encoding="application/x-tex">\mathbb N</annotation></semantics></math>.</p>
+<h3>Proof</h3>
+<p>The forward implication is trivial: if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is finite, then there must be an injection in to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℕ</mi><annotation encoding="application/x-tex">\mathbb N</annotation></semantics></math>,
+and if it bijects with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℕ</mi><annotation encoding="application/x-tex">\mathbb N</annotation></semantics></math>
+then that bijection is a valid injection. This encompasses both cases of
+countable sets.</p>
+<p>Now let us consider the reverse implication. We may assume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is infinite, since if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is finite then by definition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is countable. We know that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+injects onto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℕ</mi><annotation encoding="application/x-tex">\mathbb N</annotation></semantics></math>
+under some injective function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+bijects with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℑ</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\Im f</annotation></semantics></math>.
+So it is enough to show that the image
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℑ</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\Im f</annotation></semantics></math>
+is countable. We will now set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>1</mn></msub><annotation encoding="application/x-tex">a_1</annotation></semantics></math>
+to be the least element of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℑ</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\Im f</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>2</mn></msub><annotation encoding="application/x-tex">a_2</annotation></semantics></math>
+to be the least element not equal to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>1</mn></msub><annotation encoding="application/x-tex">a_1</annotation></semantics></math>,
+and so on. In general,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>ℑ</mi><mi>f</mi><mo>\</mo><mo stretchy="false" form="prefix">{</mo><msub><mi>a</mi><mi>i</mi></msub><mo>:</mo><mn>0</mn><mo>≤</mo><mi>i</mi><mo>&lt;</mo><mi>n</mi><mo stretchy="false" form="postfix">}</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">a_n = \min (\Im f \setminus \{ a_i : 0 \leq i &lt; n \})</annotation></semantics></math>.
+Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℑ</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\Im f</annotation></semantics></math>
+is the set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{ a_1, a_2, \dots \}</annotation></semantics></math>.
+There are no extra elements that we have not covered, since each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">a \in X</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>n</mi></msub><annotation encoding="application/x-tex">a_n</annotation></semantics></math>
+for some
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><msub><mi>a</mi><mi>n</mi></msub><mo>,</mo><mi>n</mi><mo>≤</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">a=a_n, n \leq a</annotation></semantics></math>.
+So we have listed elements of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℑ</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\Im f</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℑ</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\Im f</annotation></semantics></math>
+is countable, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is countable. ◻</p>
+<p>Thus, we can view countability as being ‘at most as large as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℕ</mi><annotation encoding="application/x-tex">\mathbb N</annotation></semantics></math>’.
+For instance, any subset of a countable set is also countable.</p>
+<h3>Remark</h3>
+<p>In
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>,
+let
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><mo>,</mo><mfrac><mn>3</mn><mn>4</mn></mfrac><mo>,</mo><mi>…</mi><mo stretchy="true" form="postfix">}</mo></mrow><mo>∪</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">X = \left\{ \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dots \right\} \cup \{ 1 \}</annotation></semantics></math>
+Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is countable, as we can list it as
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><mo>,</mo><mfrac><mn>3</mn><mn>4</mn></mfrac><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">1, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dots</annotation></semantics></math>
+But if we counted from ‘least element’ to ‘most element’, we would never
+reach the element 1 in countable time. Note further that if we find it
+difficult to construct a list for a set, it does not mean it is
+uncountable, it could just mean that we haven’t found the right list
+yet.</p>
+<h2 id="products-of-countable-sets">Products of countable sets</h2>
+<h3>Theorem</h3>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℕ</mi><mo>×</mo><mi mathvariant="double-struck">ℕ</mi></mrow><annotation encoding="application/x-tex">\mathbb N \times \mathbb N</annotation></semantics></math>
+is countable.</p>
+<h3>Proof</h3>
+<p><em>Proof 1.</em> We will define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">a_1 = (1, 1)</annotation></semantics></math>,
+and inductively define
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>−</mo><mn>1</mn><mo>,</mo><mi>q</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mi>p</mi><mo>&gt;</mo><mn>1</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mo stretchy="false" form="prefix">(</mo><mi>q</mi><mo>+</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mi>p</mi><mo>=</mo><mn>1</mn></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">a_n = \begin{cases}
+            (p-1, q+1) &amp; \text{if } p &gt; 1 \\
+            (q+1, 1)   &amp; \text{if } p = 1
+        \end{cases}</annotation></semantics></math> where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">a_{n-1} = (p, q)</annotation></semantics></math>.
+Therefore, we are essentially moving across antidiagonals of the plane.
+This does hit every point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi mathvariant="double-struck">ℕ</mi><mo>×</mo><mi mathvariant="double-struck">ℕ</mi></mrow><annotation encoding="application/x-tex">(x, y) \in \mathbb N \times \mathbb N</annotation></semantics></math>,
+for example by induction on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x+y</annotation></semantics></math>,
+so we have listed all elements of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℕ</mi><mo>×</mo><mi mathvariant="double-struck">ℕ</mi></mrow><annotation encoding="application/x-tex">\mathbb N \times \mathbb N</annotation></semantics></math>. ◻</p>
+<h3>Proof</h3>
+<p><em>Proof 2.</em> If we can define an injective function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℕ</mi><mo>×</mo><mi mathvariant="double-struck">ℕ</mi><mo>→</mo><mi mathvariant="double-struck">ℕ</mi></mrow><annotation encoding="application/x-tex">\mathbb N \times \mathbb N \to \mathbb N</annotation></semantics></math>,
+then it is countable. For example, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><msup><mn>2</mn><mi>x</mi></msup><msup><mn>3</mn><mi>y</mi></msup></mrow><annotation encoding="application/x-tex">f = 2^x 3^y</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+is injective, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℕ</mi><mo>×</mo><mi mathvariant="double-struck">ℕ</mi></mrow><annotation encoding="application/x-tex">\mathbb N \times \mathbb N</annotation></semantics></math>
+is countable. ◻</p>
+<h2 id="countable-unions-of-countable-sets">Countable unions of
+countable sets</h2>
+<p>Proof 2 is also a way to show the following theorem:</p>
+<h3>Theorem</h3>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><msub><mi>A</mi><mn>2</mn></msub><mo>,</mo><msub><mi>A</mi><mn>3</mn></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">A_1, A_2, A_3, \dots</annotation></semantics></math>
+be countable sets. Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>1</mn></msub><mo>∪</mo><msub><mi>A</mi><mn>2</mn></msub><mo>∪</mo><msub><mi>A</mi><mn>3</mn></msub><mo>∪</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">A_1 \cup A_2 \cup A_3 \cup \dots</annotation></semantics></math>
+is countable. Less formally, ‘a countable union of countable sets is
+countable’.</p>
+<h3>Proof</h3>
+<p>For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>
+is countable, so we can list
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mrow><mi>i</mi><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>a</mi><mrow><mi>i</mi><mn>2</mn></mrow></msub><mo>,</mo><msub><mi>a</mi><mrow><mi>i</mi><mn>3</mn></mrow></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">a_{i1}, a_{i2}, a_{i3}, \dots</annotation></semantics></math>
+which may or may not terminate. We can then define
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><munder><mo>⋃</mo><mrow><mi>n</mi><mo>∈</mo><mi mathvariant="double-struck">ℕ</mi></mrow></munder><msub><mi>A</mi><mi>n</mi></msub><mo>→</mo><mi mathvariant="double-struck">ℕ</mi><mo>;</mo><mspace width="1.0em"></mspace><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>2</mn><mi>i</mi></msup><msup><mn>3</mn><mi>j</mi></msup></mrow><annotation encoding="application/x-tex">f\colon \bigcup_{n \in \mathbb N}A_n \to \mathbb N;\quad f(x) = 2^i 3^j</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">x = a_{ij}</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+is in more than one set, just take the least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+that is valid. Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+is an injection so the union is countable. ◻</p>
+<p>Here are some examples of using this theorem by partitioning sets as
+a countable union of countable subsets.</p>
+<ol>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℚ</mi><annotation encoding="application/x-tex">\mathbb Q</annotation></semantics></math>
+is countable, since it is a countable union of countable sets:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℚ</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mo>∪</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi mathvariant="double-struck">ℤ</mi><mo>∪</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mi mathvariant="double-struck">ℤ</mi><mo>∪</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">\mathbb Q = \mathbb Z \cup \frac{1}{2}\mathbb Z \cup \frac{1}{3}\mathbb Z \cup \dots</annotation></semantics></math>
+Each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>n</mi></mfrac><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">\frac{1}{n}\mathbb Z</annotation></semantics></math>
+is countable, since they biject with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>
+which is a countable set. It doesn’t matter if we’ve counted an element
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℚ</mi><annotation encoding="application/x-tex">\mathbb Q</annotation></semantics></math>
+twice; the above theorem works even with intersecting sets.</p></li>
+<li><p>The set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">𝔸</mi><annotation encoding="application/x-tex">\mathbb A</annotation></semantics></math>
+of all algebraic numbers is countable. It is enough to show that the set
+of integer polynomials is countable, since each polynomial has a finite
+amount of roots and then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">𝔸</mi><annotation encoding="application/x-tex">\mathbb A</annotation></semantics></math>
+is a countable union of finite sets. Now, to show that the set of
+integer polynomials is countable, it is enough to show that for each
+degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+it is countable, since it is a countable union of all polynomials of
+degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+(again using the above theorem). To specify a polynomial of degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+you must name its coefficients, so this set injects into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℤ</mi><mrow><mi>d</mi><mo>+</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">\mathbb Z^{d+1}</annotation></semantics></math>,
+so we must just show that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℤ</mi><mrow><mi>d</mi><mo>+</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">\mathbb Z^{d+1}</annotation></semantics></math>
+is countable (not a bijection since the first term of the polynomial
+must be nonzero). We know that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℤ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb Z^n</annotation></semantics></math>
+is countable because we can inductively show that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="double-struck">ℤ</mi><mn>2</mn></msup><mo>,</mo><msup><mi mathvariant="double-struck">ℤ</mi><mn>3</mn></msup><mo>,</mo><msup><mi mathvariant="double-struck">ℤ</mi><mn>4</mn></msup><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">\mathbb Z^2, \mathbb Z^3, \mathbb Z^4, \dots</annotation></semantics></math>
+are countable inductively.</p></li>
+</ol>
+<h2 id="uncountable-sets">Uncountable sets</h2>
+<h3>Definition</h3>
+<p>A set is uncountable if there is no way to count the set.</p>
+<h3>Theorem</h3>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>
+is uncountable.</p>
+<h3>Proof</h3>
+<p><em>Proof (Cantor’s Diagonal Argument).</em> We will show that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0, 1)</annotation></semantics></math>
+is uncountable, then clearly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>
+is uncountable. Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0, 1)</annotation></semantics></math>
+is countable. Then given a sequence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>,</mo><msub><mi>r</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">r_1, r_2, \dots</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0, 1)</annotation></semantics></math>,
+we just need to find some number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>∈</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">s \in (0, 1)</annotation></semantics></math>
+not contained within this sequence. For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mi>n</mi></msub><annotation encoding="application/x-tex">r_n</annotation></semantics></math>,
+we have a decimal expansion
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>n</mi></msub><mo>=</mo><mn>0</mn><mi>.</mi><msub><mi>r</mi><mrow><mi>n</mi><mn>1</mn></mrow></msub><msub><mi>r</mi><mrow><mi>n</mi><mn>2</mn></mrow></msub><msub><mi>r</mi><mrow><mi>n</mi><mn>3</mn></mrow></msub><mi>…</mi></mrow><annotation encoding="application/x-tex">r_n = 0.r_{n1}r_{n2}r_{n3}\dots</annotation></semantics></math>.
+Let us now write all of these numbers in a matrix-style form:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>r</mi><mn>1</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>0</mn><mi>.</mi><msub><mi>r</mi><mn>11</mn></msub><msub><mi>r</mi><mn>12</mn></msub><msub><mi>r</mi><mn>13</mn></msub><mi>…</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>r</mi><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>0</mn><mi>.</mi><msub><mi>r</mi><mn>21</mn></msub><msub><mi>r</mi><mn>22</mn></msub><msub><mi>r</mi><mn>23</mn></msub><mi>…</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>r</mi><mn>3</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>0</mn><mi>.</mi><msub><mi>r</mi><mn>31</mn></msub><msub><mi>r</mi><mn>32</mn></msub><msub><mi>r</mi><mn>33</mn></msub><mi>…</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>⋮</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align*}
+        r_1 &amp; = 0.r_{11}r_{12}r_{13}\dots \\
+        r_2 &amp; = 0.r_{21}r_{22}r_{23}\dots \\
+        r_3 &amp; = 0.r_{31}r_{32}r_{33}\dots \\
+        \vdots
+\end{align*}</annotation></semantics></math> We just need to construct
+some number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+that is not in this list. So, let us simply make sure that for any given
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+value, there is at least one digit that does not match. The easiest way
+to construct such a number is
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>0</mn><mi>.</mi><msub><mi>s</mi><mn>1</mn></msub><msub><mi>s</mi><mn>2</mn></msub><msub><mi>s</mi><mn>3</mn></msub><mi>…</mi></mrow><annotation encoding="application/x-tex">s = 0.s_1 s_2 s_3 \dots</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>≠</mo><msub><mi>r</mi><mn>11</mn></msub></mrow><annotation encoding="application/x-tex">s_1 \neq r_{11}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mn>2</mn></msub><mo>≠</mo><msub><mi>r</mi><mn>22</mn></msub></mrow><annotation encoding="application/x-tex">s_2 \neq r_{22}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mn>3</mn></msub><mo>≠</mo><msub><mi>r</mi><mn>33</mn></msub></mrow><annotation encoding="application/x-tex">s_3 \neq r_{33}</annotation></semantics></math>
+and so on. We can pick any numbers we like according to these
+constraints, but we should avoid picking digits 0 and 9 since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.1000</mn><mi>…</mi><mo>=</mo><mn>0.0999</mn><mi>…</mi></mrow><annotation encoding="application/x-tex">0.1000\dots = 0.0999\dots</annotation></semantics></math>
+for example, which could cause unnecessary ambiguity. Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≠</mo><msub><mi>r</mi><mn>1</mn></msub><mo>,</mo><mi>s</mi><mo>≠</mo><msub><mi>r</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">s \neq r_1, s \neq r_2, \dots</annotation></semantics></math>
+since there is at least one mismatched digit in the expansion for each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mi>i</mi></msub><annotation encoding="application/x-tex">r_i</annotation></semantics></math>;
+they differ in decimal digit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>.
+So
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>
+is uncountable. ◻</p>
+<p>This is another proof that transcendental numbers exist.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>
+is uncountable and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">𝔸</mi><annotation encoding="application/x-tex">\mathbb A</annotation></semantics></math>
+is countable, so there exists a transcendental number. Indeed, ‘most’
+numbers are transcendental,
+i.e. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℝ</mi><mo>\</mo><mi mathvariant="double-struck">𝔸</mi></mrow><annotation encoding="application/x-tex">\mathbb R \setminus \mathbb A</annotation></semantics></math>
+is uncountable (because if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℝ</mi><mo>\</mo><mi mathvariant="double-struck">𝔸</mi></mrow><annotation encoding="application/x-tex">\mathbb R \setminus \mathbb A</annotation></semantics></math>
+were countable, then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>
+would be
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">ℝ</mi><mo>\</mo><mi mathvariant="double-struck">𝔸</mi><mo stretchy="false" form="postfix">)</mo><mo>∪</mo><mi mathvariant="double-struck">𝔸</mi></mrow><annotation encoding="application/x-tex">(\mathbb R \setminus \mathbb A) \cup \mathbb A</annotation></semantics></math>
+which is a finite union of countable sets ).</p>
+<h3>Theorem</h3>
+<p>The power set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">ℕ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal P(\mathbb N)</annotation></semantics></math>
+is uncountable.</p>
+<h3>Proof</h3>
+<p>Suppose the subsets of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℕ</mi><annotation encoding="application/x-tex">\mathbb N</annotation></semantics></math>
+are listed as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>1</mn></msub><mo>,</mo><msub><mi>S</mi><mn>2</mn></msub><mo>,</mo><msub><mi>S</mi><mn>3</mn></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">S_1, S_2, S_3, \dots</annotation></semantics></math>
+then we want to construct another set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+that is not equal to any of the other sets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>i</mi></msub><annotation encoding="application/x-tex">S_i</annotation></semantics></math>.
+So for each set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>i</mi></msub><annotation encoding="application/x-tex">S_i</annotation></semantics></math>,
+we must ensure that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>i</mi></msub><annotation encoding="application/x-tex">S_i</annotation></semantics></math>
+differ for at least one value. An easy way to do this is to include the
+number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+in the subset if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>i</mi></msub><annotation encoding="application/x-tex">S_i</annotation></semantics></math>
+does not contain the number, and to exclude
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>∈</mo><msub><mi>S</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">i \in S_i</annotation></semantics></math>.
+Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+differs from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>i</mi></msub><annotation encoding="application/x-tex">S_i</annotation></semantics></math>
+at position
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>.
+This is the same logic as the diagonal argument above. We have:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>n</mi><mo>∈</mo><mi mathvariant="double-struck">ℕ</mi><mo>:</mo><mi>n</mi><mo>∉</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">S = \{ n \in \mathbb N : n \notin S_n \}</annotation></semantics></math>
+So
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+is not on the list
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>1</mn></msub><mo>,</mo><msub><mi>S</mi><mn>2</mn></msub><mo>,</mo><msub><mi>S</mi><mn>3</mn></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">S_1, S_2, S_3, \dots</annotation></semantics></math>
+no matter what way we choose to list the elements, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">ℕ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal P(\mathbb N)</annotation></semantics></math>
+is uncountable. ◻</p>
+<h3>Remark</h3>
+<p>Alternatively, we could just inject
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0, 1)</annotation></semantics></math>
+into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">ℕ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal P(\mathbb N)</annotation></semantics></math>.
+For example, consider
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x \in (0, 1)</annotation></semantics></math>
+represented as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mi>.</mi><msub><mi>x</mi><mn>1</mn></msub><msub><mi>x</mi><mn>2</mn></msub><msub><mi>x</mi><mn>3</mn></msub><msub><mi>x</mi><mn>4</mn></msub><mi>…</mi></mrow><annotation encoding="application/x-tex">0.x_1x_2x_3x_4\dots</annotation></semantics></math>
+in binary where the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">x_1, x_2, \dots</annotation></semantics></math>
+are zero or one (not ending with an infinite amount of 1s). We can
+convert this
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+into a subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℕ</mi><annotation encoding="application/x-tex">\mathbb N</annotation></semantics></math>
+by considering the set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>n</mi><mo>∈</mo><mi mathvariant="double-struck">ℕ</mi><mo>:</mo><msub><mi>x</mi><mi>n</mi></msub><mo>=</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{ n \in \mathbb N : x_n = 1 \}</annotation></semantics></math>.
+Then the uncountability follows.</p>
+<p>In fact, our proof of this theorem shows the following.</p>
+<h3>Theorem</h3>
+<p>For any set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>,
+there is no bijection from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+to the power set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal P(X)</annotation></semantics></math>.</p>
+<p>For example,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>
+does not biject with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">ℝ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal P(\mathbb R)</annotation></semantics></math>.
+The proof in fact will show that there is no surjection from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+to its power set; i.e. the power set is ‘larger’ than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.</p>
+<h3>Proof</h3>
+<p>Given any function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>X</mi><mo>→</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f\colon X \to \mathcal P(X)</annotation></semantics></math>,
+we will show
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+is not surjective. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>x</mi><mo>∈</mo><mi>X</mi><mo>:</mo><mi>x</mi><mo>∉</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">S = \{ x \in X: x \notin f(x) \}</annotation></semantics></math>.
+Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+does not belong to the image of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+because they differ at element
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>;
+for all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+we have
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>≠</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">S \neq f(x)</annotation></semantics></math>. ◻</p>
+<h3>Remark</h3>
+<p>Note that:</p>
+<ol>
+<li><p>This is similar in some sense to Russell’s paradox.</p></li>
+<li><p>This theorem gives another proof that there is no universal set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℰ</mi><annotation encoding="application/x-tex">\mathscr E</annotation></semantics></math>,
+since its power set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">ℰ</mi><mo stretchy="false" form="postfix">)</mo><mo>⊆</mo><mi mathvariant="script">ℰ</mi></mrow><annotation encoding="application/x-tex">\mathcal P(\mathscr E) \subseteq \mathscr E</annotation></semantics></math>.
+But of course, there is always a surjection from a set to a subset. This
+is a contradiction.</p></li>
+</ol>
+<h3>Example</h3>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>,</mo><mi>i</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">A_i, i \in I</annotation></semantics></math>
+be a family of open, pairwise disjoint intervals. Must this family be
+countable? Note that it is not as simple as just listing from left to
+right, for example consider
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>,</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>,</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mi>…</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\left(\frac{1}{2}, 1\right), \left(\frac{1}{3}, \frac{1}{2}\right), \left(\frac{1}{4}, \frac{1}{3}\right), \dots, (-1, 0)</annotation></semantics></math>
+Then the leftmost interval is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(-1, 0)</annotation></semantics></math>,
+but there is no ‘next interval’ just after it. Also consider
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><mo>,</mo><mfrac><mn>3</mn><mn>4</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mi>…</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\left( 0, \frac{1}{2} \right), \left( \frac{1}{2}, \frac{2}{3} \right), \left( \frac{2}{3}, \frac{3}{4} \right), \dots, (1, 2)</annotation></semantics></math>
+Then we can list the first infinitely many intervals, but we will never
+reach
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math>.
+The answer turns out to be true; the family is countable. Here are two
+important proofs.</p>
+<h3>Proof</h3>
+<p><em>Proof 1.</em> Each interval
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>
+contains a rational number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>i</mi></msub><annotation encoding="application/x-tex">a_i</annotation></semantics></math>.
+The rationals
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℚ</mi><annotation encoding="application/x-tex">\mathbb Q</annotation></semantics></math>
+are countable. So let us just list the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>i</mi></msub><annotation encoding="application/x-tex">a_i</annotation></semantics></math>.
+The family is therefore countable. ◻</p>
+<h3>Proof</h3>
+<p><em>Proof 2.</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>i</mi><mo>∈</mo><mi>I</mi><mo>:</mo><msub><mi>A</mi><mi>i</mi></msub><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> has length </mtext><mspace width="0.333em"></mspace></mrow><mo>≤</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{ i \in I: A_i \text{ has length } \leq 1\}</annotation></semantics></math>
+is certainly countable, since it injects into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>
+(here, as all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>
+contain some integer). Further,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mi>i</mi><mo>∈</mo><mi>I</mi><mo>:</mo><msub><mi>A</mi><mi>i</mi></msub><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> has length </mtext><mspace width="0.333em"></mspace></mrow><mo>≤</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\left\{ i \in I: A_i \text{ has length } \leq \frac{1}{2} \right\}</annotation></semantics></math>
+is countable for the same reason. Essentially, for all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mi>i</mi><mo>∈</mo><mi>I</mi><mo>:</mo><msub><mi>A</mi><mi>i</mi></msub><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> has length </mtext><mspace width="0.333em"></mspace></mrow><mo>≤</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo stretchy="true" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\left\{ i \in I: A_i \text{ has length } \leq \frac{1}{n} \right\}</annotation></semantics></math>
+is countable. We have written all the intervals as a countable union
+(over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>)
+of countable sets. ◻</p>
+<p>To summarise, if we want to show a set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is uncountable:</p>
+<ol>
+<li><p>Run a diagonal argument; or</p></li>
+<li><p>Inject an uncountable set into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math></p></li>
+</ol>
+<p>To show a set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is countable:</p>
+<ol>
+<li><p>List all the elements (usually fiddly); or</p></li>
+<li><p>Inject
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℕ</mi><annotation encoding="application/x-tex">\mathbb N</annotation></semantics></math>
+(or another countable set); or</p></li>
+<li><p>Express
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+as a countable union of countable sets (usually the best); or</p></li>
+<li><p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is ‘in’ or ‘near’
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>,
+consider
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℚ</mi><annotation encoding="application/x-tex">\mathbb Q</annotation></semantics></math>
+(see Proof 2 above).</p></li>
+</ol>
+<h2 id="comparing-sizes-of-sets">Comparing sizes of sets</h2>
+<p>Intuitively, we might think that:</p>
+<ul>
+<li><p>‘<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+bijects with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>’
+means
+‘<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+has the same size as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>’.</p></li>
+<li><p>‘<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+injects into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>’
+means
+‘<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is at most as large as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>’.</p></li>
+<li><p>‘<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+surjects onto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>’
+means
+‘<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is at least as large as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>’.</p></li>
+</ul>
+<p>Of course, these analogies break down where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+is zero, since there are no functions from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+in this case. For these to make sense, we require (for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>,</mo><mi>B</mi><mo>≠</mo><mi>⌀</mi></mrow><annotation encoding="application/x-tex">A, B\neq\varnothing</annotation></semantics></math>)
+‘<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+injects into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>’
+to be true if and only if
+‘<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+surjects onto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>’,
+and vice versa.</p>
+<ul>
+<li><p>In the forward direction, we are given an injection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">f\colon A \to B</annotation></semantics></math>.
+Pick some point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>0</mn></msub><annotation encoding="application/x-tex">a_0</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+and define a surjective function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><mi>B</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">g\colon B \to A</annotation></semantics></math>
+given by
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>↦</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>a</mi></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mo>∃</mo><mi>!</mi><mspace width="0.222em"></mspace><mi>a</mi><mo>∈</mo><mi>A</mi><mo>,</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>b</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>a</mi><mn>0</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">otherwise</mtext></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">b \mapsto \begin{cases}
+                  a   &amp; \text{if } \exists!\ a \in A, f(a) = b \\
+                  a_0 &amp; \text{otherwise}
+              \end{cases}</annotation></semantics></math> Since the
+mapping
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+is injective, the first case will always provide a unique value of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.</p></li>
+<li><p>Proving the converse, we are given a surjection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><mi>B</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">g\colon B \to A</annotation></semantics></math>.
+For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+we have some
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mo>′</mo></msup><mo>∈</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">a&#39; \in B</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>a</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">g(a&#39;) = a</annotation></semantics></math>
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+is a surjection. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>a</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">f(a) = a&#39;</annotation></semantics></math>
+for each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">a\in A</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+is injective.</p></li>
+</ul>
+<h2 id="schröderbernstein-theorem">Schröder–Bernstein theorem</h2>
+<p>Further, we must also have that if
+‘<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is at most as large as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>’
+and
+‘<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+is at most as large as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>’,
+then they must be the same size. Otherwise this size intuition would not
+make sense.</p>
+<h3>Theorem</h3>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">f\colon A\to B</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><mi>B</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">g\colon B\to A</annotation></semantics></math>
+are injections, then there exists a bijection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">h\colon A\to B</annotation></semantics></math>.</p>
+<h3>Proof</h3>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">a\in A</annotation></semantics></math>,
+we will write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>g</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g^{-1}(a)</annotation></semantics></math>
+to denote the unique
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>∈</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">b \in B</annotation></semantics></math>
+such that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">g(b) = a</annotation></semantics></math>,
+if such a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+exists (and similarly for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f^{-1}(b)</annotation></semantics></math>).
+The ‘ancestor sequence’ of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">a \in A</annotation></semantics></math>
+is
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>g</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>g</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><msup><mi>g</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>g</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">g^{-1}(a), f^{-1}g^{-1}(a), g^{-1}f^{-1}g^{-1}(a), \dots</annotation></semantics></math>
+which may terminate. So for any ancestor, after undergoing the relevant
+function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+repeatedly, we will end up at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+There are three possible behaviours:</p>
+<ul>
+<li><p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>0</mn></msub><annotation encoding="application/x-tex">A_0</annotation></semantics></math>
+be the subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+such that the ancestor sequence stops at even time, i.e. the last
+ancestor is in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>;</p></li>
+<li><p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>1</mn></msub><annotation encoding="application/x-tex">A_1</annotation></semantics></math>
+be the subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+such that the ancestor sequence stops at odd time, i.e. the last
+ancestor is in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>;
+and</p></li>
+<li><p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>∞</mi></msub><annotation encoding="application/x-tex">A_\infty</annotation></semantics></math>
+be the subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+such that the ancestor sequence does not terminate.</p></li>
+</ul>
+<p>We specify 0 to be even, i.e. if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">a\in A</annotation></semantics></math>
+has no ancestor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>g</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g^{-1}(a)</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><msub><mi>A</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">a \in A_0</annotation></semantics></math>.
+We define similar subsets of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mn>0</mn></msub><annotation encoding="application/x-tex">B_0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mn>1</mn></msub><annotation encoding="application/x-tex">B_1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>∞</mi></msub><annotation encoding="application/x-tex">B_\infty</annotation></semantics></math>.
+Now:</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">f\colon A \to B</annotation></semantics></math>
+is a bijection between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>0</mn></msub><annotation encoding="application/x-tex">A_0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mn>1</mn></msub><annotation encoding="application/x-tex">B_1</annotation></semantics></math>.
+Clearly if some element
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+has an even number of ancestors, the ancestors of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(a)</annotation></semantics></math>
+are exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+and all of its ancestors, i.e. an odd number. It is surjective because
+every element in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mn>1</mn></msub><annotation encoding="application/x-tex">B_1</annotation></semantics></math>
+has an inverse
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><msub><mi>A</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">f^{-1}(b) \in A_0</annotation></semantics></math>
+by construction.</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><mi>B</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">g\colon B \to A</annotation></semantics></math>
+is a bijection between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mn>0</mn></msub><annotation encoding="application/x-tex">B_0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>1</mn></msub><annotation encoding="application/x-tex">A_1</annotation></semantics></math>
+due to the same argument.</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+(or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>,
+both functions work for this proof) bijects
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>∞</mi></msub><annotation encoding="application/x-tex">A_\infty</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>∞</mi></msub><annotation encoding="application/x-tex">B_\infty</annotation></semantics></math>.
+It is surjective because for every element
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>∈</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">b \in B</annotation></semantics></math>,
+it has some ancestor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><msub><mi>A</mi><mi>∞</mi></msub></mrow><annotation encoding="application/x-tex">f^{-1}(b) \in A_\infty</annotation></semantics></math>.</p></li>
+</ul>
+<p>So the function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">h\colon A \to B</annotation></semantics></math>
+is given by
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mi>a</mi><mo>∈</mo><msub><mi>A</mi><mn>0</mn></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msup><mi>g</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mi>a</mi><mo>∈</mo><msub><mi>A</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mi>a</mi><mo>∈</mo><msub><mi>A</mi><mi>∞</mi></msub></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">h(a) = \begin{cases}
+            f(a)      &amp; \text{if } a \in A_0      \\
+            g^{-1}(a) &amp; \text{if } a \in A_1      \\
+            f(a)      &amp; \text{if } a \in A_\infty
+        \end{cases}</annotation></semantics></math> is a
+bijection. ◻</p>
+<p>Let us consider an example of this theorem in action. Do
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0, 1]</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>∪</mo><mo stretchy="false" form="prefix">[</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0,1]\cup[2,3]</annotation></semantics></math>
+biject? All we need is to find an injection both ways.</p>
+<ul>
+<li><p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>→</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>∪</mo><mo stretchy="false" form="prefix">[</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">f\colon [0,1] \to [0,1] \cup [2,3]</annotation></semantics></math>
+be the identity map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">f(x) = x</annotation></semantics></math>.</p></li>
+<li><p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>∪</mo><mo stretchy="false" form="prefix">[</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">]</mo><mo>→</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">g\colon [0,1] \cup [2,3] \to [0,1]</annotation></semantics></math>
+be given by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>x</mi><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">g(x) = x/3</annotation></semantics></math>.</p></li>
+</ul>
+<p>It would also be nice to have that, for any sets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>,
+either
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+injects into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+injects into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Then we can create a total ordering, rather than a partial ordering; we
+can compare any two sets. This is proven to be true in the Part II
+course Logic and Set Theory.</p>
+<h2 id="arbitrarily-large-sets">Arbitrarily large sets</h2>
+<p>We have the sets
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℕ</mi><mo>,</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">ℕ</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">ℕ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mi>…</mi><mo>,</mo><msup><mi mathvariant="script">𝒫</mi><mi>k</mi></msup><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">ℕ</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">\mathbb N, \mathcal P(\mathbb N), \mathcal P(\mathcal P(\mathbb N)), \dots, \mathcal P^k(\mathbb N), \dots</annotation></semantics></math>
+Does every set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+inject into one of those? It seems like this might be true, but the set
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi mathvariant="double-struck">ℕ</mi><mo>∪</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">ℕ</mi><mo stretchy="false" form="postfix">)</mo><mo>∪</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">ℕ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>∪</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">X = \mathbb N \cup \mathcal P(\mathbb N) \cup \mathcal P(\mathcal P(\mathbb N)) \cup \dots</annotation></semantics></math>
+is a counterexample. Let us continue further with this approach.
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>X</mi><mo>′</mo></msup><mo>=</mo><mi>X</mi><mo>∪</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>∪</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>∪</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">X&#39; = X \cup \mathcal P(X) \cup \mathcal P(\mathcal P(X)) \cup \dots</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>X</mi><mo>″</mo></msup><mo>=</mo><msup><mi>X</mi><mo>′</mo></msup><mo>∪</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>X</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mo>∪</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">𝒫</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>X</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>∪</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">X&#39;&#39; = X&#39; \cup \mathcal P(X&#39;) \cup \mathcal P(\mathcal P(X&#39;)) \cup \dots</annotation></semantics></math>
+and so on. Now, does every set inject into one of these sets? No,
+consider
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mi>X</mi><mo>∪</mo><msup><mi>X</mi><mo>′</mo></msup><mo>∪</mo><msup><mi>X</mi><mo>″</mo></msup><mo>∪</mo><msup><mi>X</mi><mo>‴</mo></msup><mo>∪</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">Y = X \cup X&#39; \cup X&#39;&#39; \cup X&#39;&#39;&#39; \cup \dots</annotation></semantics></math>
+We can keep going forever. So we can’t construct a set that all sets
+inject into.</p>
+<h2 id="what-happens-next">What happens next?</h2>
+<p>This is the end of the Numbers and Sets course. Here are a few of the
+courses that feed from this course.</p>
+<ul>
+<li><p>Factorisation is taken further in the IB Groups, Rings and
+Modules course.</p></li>
+<li><p>Fermat’s Little Theorem, squares modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+etc. are taken further in II Number Theory.</p></li>
+<li><p>The analysis chapter is extended by IA Analysis.</p></li>
+<li><p>Countability and sizes of sets are taken further in the II Logic
+and Set Theory course.</p></li>
+</ul>
+</main>
+
+<footer>
+  <p><a href="../../">Main Homepage</a></p>
+</footer>
+
+</body>
+</html>

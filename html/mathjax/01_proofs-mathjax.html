@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01_proofs (MathJax Version)</title>
+  <style>
+    /* Styles will be inserted here */
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+
+<a href="#main">Skip to main content</a>
+
+<header>
+  <h1>01_proofs (MathJax Version)</h1>
+</header>
+
+<nav aria-label="Page Navigation">
+  <ul>
+    <li><a href="../">Back to Generated Index</a></li>
+            <li><a href="../mathml/01_proofs-mathml.html">Switch to MathML Version</a></li>
+      </ul>
+</nav>
+
+<main id="main">
+<h2 id="motivation-for-proof">Motivation for proof</h2>
+<h3>Definition</h3>
+<p>A proof is a logical argument that establishes a conclusion.</p>
+<p>Clearly there are some things missing from this definition; we have
+not yet defined a ‘logical argument’ or a ‘conclusion’; however we have
+to start somewhere, and assuming understanding of logic is a good place
+to start. There is a 3rd year course called ‘Logic and Set Theory’ that
+rigorously defines this.</p>
+<p>There are two main reasons to want to prove things.</p>
+<ol>
+<li><p>To be sure that they are true; and</p></li>
+<li><p>to understand why they are true.</p></li>
+</ol>
+<p>For the first point, it is easy to make a contrived example that
+shows why we need to prove statements even though they appear to be true
+for small <span class="math inline">\(n\)</span>, for example: ‘all
+positive integers <span class="math inline">\(n\)</span> are not equal
+to 100 trillion’. Understanding the reasoning behind why a statement is
+true is also very important; an example of this is at the end of this
+lecture.</p>
+<h2 id="proofs-and-non-proofs">Proofs and non-proofs</h2>
+<h3>Claim</h3>
+<p>For any positive integer <span class="math inline">\(n\)</span>,
+<span class="math inline">\(n^3-n\)</span> is a multiple of 3.</p>
+<h3>Proof</h3>
+<p>Given some positive integer <span class="math inline">\(n\)</span>,
+we have</p>
+<p><span class="math display">\[n^3 - n = (n-1)n(n+1)\]</span></p>
+<p>One of <span class="math inline">\(n-1,\,n,\,n+1\)</span> must be a
+multiple of 3 as they are 3 consecutive integers.</p>
+<p>Therefore, <span class="math inline">\((n-1)n(n+1)\)</span> must be a
+multiple of 3. ◻</p>
+<p>There are a couple of things to note about this proof.</p>
+<ul>
+<li><p>The phrase ‘given a positive integer’ is important; we need to
+know where this variable <span class="math inline">\(n\)</span> came
+from.</p></li>
+<li><p>We used the fact that three consecutive numbers contain a
+multiple of 3 here, but this was not proven. We must prove this fact
+elsewhere, or we cannot use it in this course!</p></li>
+<li><p>It is important to write proofs legibly and linearly down the
+page; don’t just write a long line of symbols.</p></li>
+</ul>
+<h3>Claim</h3>
+<p>For any positive integer <span class="math inline">\(n\)</span>, if
+<span class="math inline">\(n^2\)</span> is even then <span
+class="math inline">\(n\)</span> is even.</p>
+<h3>Proof</h3>
+<p>Given a positive integer <span class="math inline">\(n\)</span> that
+is even, we have <span class="math inline">\(n=2k\)</span> for some
+integer <span class="math inline">\(k\)</span>.</p>
+<p>Thus <span class="math inline">\(n^2 = (2k)^2 = 4k^2 =
+2(2k^2)\)</span>,</p>
+<p>so <span class="math inline">\(n^2\)</span> is even. ◻</p>
+<h3>Note</h3>
+<p>This is a false proof. We proved that <span class="math inline">\(B
+\implies A\)</span>, but we want <span class="math inline">\(A \implies
+B\)</span>. Our result wasn’t false, but it didn’t show what we set out
+to prove. The words ‘for some integer <span
+class="math inline">\(k\)</span>’ are important: we must specify which
+set <span class="math inline">\(k\)</span> belongs to. Our proof would
+be incorrect if we did not state this, as it would be unclear that <span
+class="math inline">\(2(2k^2)\)</span> is an even number.</p>
+<h3>Claim</h3>
+<p>For any positive integer <span class="math inline">\(n\)</span>, if
+<span class="math inline">\(n^2\)</span> is a multiple of 9 then <span
+class="math inline">\(n\)</span> is a multiple of 9.</p>
+<h3>Proof</h3>
+<p>Given a positive integer <span class="math inline">\(n\)</span> that
+is a multiple of 9, we have <span class="math inline">\(n=9k\)</span>
+for some integer <span class="math inline">\(k\)</span>.</p>
+<p>Therefore, <span class="math inline">\(n^2 = (9k)^2 = 81k^2 =
+9(9k^2)\)</span>,</p>
+<p>so <span class="math inline">\(n^2\)</span> is a multiple of 9. ◻</p>
+<h3>Note</h3>
+<p>Not only does this fall for the same trap as the previous proof, but
+the original claim is false (e.g. <span
+class="math inline">\(n=6\)</span>)! It’s entirely irrelevant that the
+claim is true for some positive integers, because even one
+counterexample disproves the claim.</p>
+<p>Let’s return now to the previous incorrect example: ‘if <span
+class="math inline">\(n^2\)</span> even then <span
+class="math inline">\(n\)</span> even for all positive integers <span
+class="math inline">\(n\)</span>’.</p>
+<h3>Proof</h3>
+<p>Suppose that <span class="math inline">\(n\)</span> is odd.</p>
+<p>We have <span class="math inline">\(n = 2k+1\)</span> for some
+integer <span class="math inline">\(k\)</span>.</p>
+<p>Therefore, <span class="math inline">\(n^2 = (2k+1)^2 = 4k^2 + 4k + 1
+= 2(2k^2 + 2k) + 1\)</span></p>
+<p><span class="math inline">\(n^2\)</span> is odd</p>
+<p>Therefore <span class="math inline">\(n\)</span> is even. ◻</p>
+<ul>
+<li><p>We prove things to show <em>why</em> something is true. We can
+see why this claim was true here—it’s really a statement about the
+properties of odd numbers, not the properties of even numbers.</p></li>
+<li><p>We started by saying that we need something tangible to work
+with: just stating that ‘<span class="math inline">\(n^2\)</span> is
+even’ is really hard to work with because square roots just get messy
+and don’t yield any result. So we had to choose a clever first
+step.</p></li>
+<li><p>The symbol shows that we have a contradiction.</p></li>
+</ul>
+<p>This was a kind of proof by contradiction. Essentially, <span
+class="math inline">\(A \implies B\)</span> is the same as saying <span
+class="math inline">\(\neg B \implies \neg A\)</span>. This is
+because:</p>
+<ul>
+<li><p><span class="math inline">\(A \implies B\)</span> means that
+there is no case such that <span class="math inline">\(A\)</span> is
+false and <span class="math inline">\(B\)</span> is true.</p></li>
+<li><p><span class="math inline">\(\neg B \implies \neg A\)</span> means
+that there is no case such that <span class="math inline">\(\neg
+B\)</span> is false and <span class="math inline">\(\neg A\)</span> is
+true. In other words, there is no case such that <span
+class="math inline">\(B\)</span> is true and <span
+class="math inline">\(A\)</span> is false. This is equivalent to the
+case with <span class="math inline">\(A \implies B\)</span>.</p></li>
+</ul>
+<h3>Claim</h3>
+<p>The solution to the real equation <span
+class="math inline">\(x^2-5x+6=0\)</span> is <span
+class="math inline">\(x=2\)</span> or <span
+class="math inline">\(x=3\)</span>.</p>
+<h3>Note</h3>
+<p>This is really two assertions:</p>
+<ol>
+<li><p><span class="math inline">\(x=2 \lor x=3 \implies x^2 - 5x + 6 =
+0\)</span>, and</p></li>
+<li><p><span class="math inline">\(x^2 - 5x + 6 = 0 \implies x=2 \lor
+x=3\)</span></p></li>
+</ol>
+<p>We can denote this using a two-way implication symbol <span
+class="math inline">\(\iff\)</span>: <span class="math display">\[x=2
+\lor x=3 \iff x^2 - 5x + 6 = 0\]</span></p>
+<h3>Proof</h3>
+<p>We prove case i by expressing the left hand side as a product of
+factors: <span class="math inline">\((x-3)(x-2)=0\)</span>. The other
+case may be proven using factorisation. ◻</p>
+<p>We can do another kind of proof using <span
+class="math inline">\(\iff\)</span> symbols a lot. However, we need to
+be absolutely sure that each step really is a bi-implication.</p>
+<h3>Proof</h3>
+<p>For any real <span class="math inline">\(x\)</span>: <span
+class="math display">\[\begin{align*}
+        x^2-5x+6=0 &amp; \iff (x-2)(x-3) = 0       \\
+                   &amp; \iff x-2 = 0 \lor x-3 = 0 \\
+                   &amp; \iff x=2 \lor x = 3
+\end{align*}\]</span> ◻</p>
+<h3>Claim</h3>
+<p>Every positive real is at least 1.</p>
+<h3>Proof</h3>
+<p>Let <span class="math inline">\(x\)</span> be the smallest positive
+real. We want to prove <span class="math inline">\(x=1\)</span>, so we
+prove this by contradiction.</p>
+<p>Case 1: if <span class="math inline">\(x &lt; 1\)</span> then <span
+class="math inline">\(x^2 &lt; x\)</span></p>
+<p>Case 2: if <span class="math inline">\(x &gt; 1\)</span> then <span
+class="math inline">\(\sqrt{x} &lt; x\)</span></p>
+<p>Therefore <span class="math inline">\(x=1\)</span> ◻</p>
+<h3>Note</h3>
+<p>The assertion that there exists a smallest positive real is not
+justified. This means that the proof is invalid in its entirety. It is
+important that every line in a proof must be justified.</p>
+</main>
+
+<footer>
+  <p><a href="../../">Main Homepage</a></p>
+</footer>
+
+</body>
+</html>

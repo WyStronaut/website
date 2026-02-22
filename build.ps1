@@ -1,4 +1,18 @@
-# Ensure required folders exist
+param(
+    [string]$sourceDir = "tex"
+)
+
+# ----------------------------
+# Validate source directory
+# ----------------------------
+if (!(Test-Path $sourceDir)) {
+    Write-Host "Source directory '$sourceDir' not found."
+    exit 1
+}
+
+# ----------------------------
+# Ensure required output folders exist
+# ----------------------------
 $folders = @("html", "html/mathml", "html/mathjax")
 
 foreach ($folder in $folders) {
@@ -7,37 +21,57 @@ foreach ($folder in $folders) {
     }
 }
 
-# CLEAN OUTPUT FOLDERS (correctness mode)
-Get-ChildItem "html/mathml" -Filter "*.html" | Remove-Item -Force
-Get-ChildItem "html/mathjax" -Filter "*.html" | Remove-Item -Force
+# ----------------------------
+# Clean output folders (deterministic builds)
+# ----------------------------
+Get-ChildItem "html/mathml" -Filter "*.html" -ErrorAction SilentlyContinue | Remove-Item -Force
+Get-ChildItem "html/mathjax" -Filter "*.html" -ErrorAction SilentlyContinue | Remove-Item -Force
 
-# Get all .tex files
-$texFiles = Get-ChildItem -Path "tex" -Filter "*.tex"
+# ----------------------------
+# Get all .tex files from source directory
+# ----------------------------
+$texFiles = Get-ChildItem -Path $sourceDir -Filter "*.tex"
 
-# Navigation items
+if ($texFiles.Count -eq 0) {
+    Write-Host "No .tex files found in '$sourceDir'."
+    exit 0
+}
+
+# ----------------------------
+# Navigation items for generated index
+# ----------------------------
 $navItems = @()
 
 foreach ($file in $texFiles) {
 
     $name = [System.IO.Path]::GetFileNameWithoutExtension($file.Name)
-
     Write-Host "Building $name..."
 
+    # ----------------------------
     # MathML version
+    # ----------------------------
     pandoc $file.FullName -s -t html5 --mathml `
       --template=templates/template.html `
+      --lua-filter=filters/theorem_blocks_to_headings.lua `
       -M "title=$name (MathML Version)" `
       -M "basename=$name" `
       -M mathml=true `
       -o "html/mathml/$name-mathml.html"
+
+    # ----------------------------
     # MathJax version
+    # ----------------------------
     pandoc $file.FullName -s --mathjax `
       --template=templates/template.html `
+      --lua-filter=filters/theorem_blocks_to_headings.lua `
       -M "title=$name (MathJax Version)" `
       -M "basename=$name" `
       -M mathjax=true `
       -o "html/mathjax/$name-mathjax.html"
-    # Add navigation entry
+
+    # ----------------------------
+    # Add entry to generated index
+    # ----------------------------
     $navItems += @"
 <li>
   $name
@@ -49,7 +83,9 @@ foreach ($file in $texFiles) {
 "@
 }
 
+# ----------------------------
 # Generate html/index.html
+# ----------------------------
 $indexContent = @"
 <!doctype html>
 <html lang="en">
@@ -85,6 +121,6 @@ $($navItems -join "`n")
 </html>
 "@
 
-Set-Content -Path "html/index.html" -Value $indexContent
+Set-Content -Path "html/index.html" -Value $indexContent -Encoding UTF8
 
 Write-Host "Clean build complete."

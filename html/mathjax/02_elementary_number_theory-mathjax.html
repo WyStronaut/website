@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02_elementary_number_theory (MathJax Version)</title>
+  <style>
+    /* Styles will be inserted here */
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+
+<a href="#main">Skip to main content</a>
+
+<header>
+  <h1>02_elementary_number_theory (MathJax Version)</h1>
+</header>
+
+<nav aria-label="Page Navigation">
+  <ul>
+    <li><a href="../">Back to Generated Index</a></li>
+            <li><a href="../mathml/02_elementary_number_theory-mathml.html">Switch to MathML Version</a></li>
+      </ul>
+</nav>
+
+<main id="main">
+<h2 id="the-natural-numbers">The natural numbers</h2>
+<p>Each line in a proof must be justified. So, in number theory, what
+are you allowed to assume? We must begin with a set of axioms. We define
+that the natural numbers are a set denoted <span
+class="math inline">\(\mathbb N\)</span>, that contains an element
+denoted 1, with an operation <span class="math inline">\(+1\)</span>
+satisfying:</p>
+<ol>
+<li><p><span class="math inline">\(\forall n \in \mathbb N, n + 1 \neq
+1\)</span></p></li>
+<li><p><span class="math inline">\(\forall m,n \in \mathbb N, m \neq n
+\implies m+1 \neq n+1\)</span> (together with the previous rule, this
+captures the idea that all numbers in <span
+class="math inline">\(\mathbb N\)</span> are distinct)</p></li>
+<li><p>For any property <span class="math inline">\(p(n)\)</span>, if
+<span class="math inline">\(p(1)\)</span> is true and <span
+class="math inline">\(p(n) \implies p(n+1) \ \forall n \in \mathbb
+N\)</span>, then <span class="math inline">\(p(n) \ \forall n \in
+\mathbb N\)</span> (induction axiom).</p></li>
+</ol>
+<p>This list of rules is known as the Peano axioms. Note that we did not
+include 0 in this set. You can show that the list of natural numbers is
+complete and has no extras (like the rational number <span
+class="math inline">\(3.5\)</span>) by specifying <span
+class="math inline">\(p(n)=\)</span> ‘<span
+class="math inline">\(n\)</span> is on the list of natural numbers’.</p>
+<p>Note that while numbers are defined as, for example, <span
+class="math inline">\(1+1+1+1\)</span>, we are free to use whatever
+names we like, e.g. 4 or 3735928559.</p>
+<p>We may also define our own operations, such as <span
+class="math inline">\(+2\)</span>, which is defined to be <span
+class="math inline">\(+1+1\)</span>. In fact, we can define the
+operation <span class="math inline">\(+k\)</span> for any <span
+class="math inline">\(k \in \mathbb N\)</span> by stating: <span
+class="math display">\[(n+k)+1 = n+(k+1) \quad(\forall n, k \in \mathbb
+N)\]</span> and using induction to construct the <span
+class="math inline">\(+k\)</span> operator for all <span
+class="math inline">\(k\)</span>. We can similarly construct
+multiplication and exponentiation operators for all natural numbers,
+although this is omitted here. We can also prove properties on these
+operators such as associativity, commutativity and distributivity.</p>
+<p>We can also define the <span class="math inline">\(&lt;\)</span>
+operator as follows: <span class="math inline">\(a &lt; b \iff \exists k
+\in \mathbb N \st a + k = b\)</span>. Of course, we can also prove
+several properties using this rule, such as transitivity, and the fact
+that <span class="math inline">\(a \nless a\)</span>, which are omitted
+here.</p>
+<h2 id="strong-induction">Strong induction</h2>
+<p>The induction axiom states that if we know</p>
+<ul>
+<li><p><span class="math inline">\(p(1)\)</span> is true, and</p></li>
+<li><p><span class="math inline">\(p(n) \implies p(n+1)\)</span> for any
+<span class="math inline">\(n \in \mathbb N\)</span></p></li>
+</ul>
+<p>then we can conclude that <span class="math inline">\(p(n)\)</span>
+is true for all <span class="math inline">\(n \in \mathbb N\)</span>. We
+can in fact prove a stronger statement using this axiom, known as
+‘strong induction’.</p>
+<h3>Claim</h3>
+<p>If we know that</p>
+<ul>
+<li><p><span class="math inline">\(p(1)\)</span> is true, and</p></li>
+<li><p>the fact that <span class="math inline">\(p(k)\)</span> is true
+for all <span class="math inline">\(k &lt; n\)</span> implies that <span
+class="math inline">\(p(n)\)</span> is true</p></li>
+</ul>
+<p>then <span class="math inline">\(p(n)\)</span> is true for all <span
+class="math inline">\(n \in \mathbb N\)</span>.</p>
+<h3>Proof</h3>
+<p>Consider the predicate <span class="math inline">\(q(n)\)</span>
+defined as: ‘<span class="math inline">\(p(k)\)</span> is true for all
+<span class="math inline">\(k &lt; n\)</span>’. Given that <span
+class="math inline">\(p(1)\)</span> is true, <span
+class="math inline">\(q(1)\)</span> is trivially true since there are no
+<span class="math inline">\(k\)</span> below 1. Since <span
+class="math inline">\(q(n) \implies q(n+1)\)</span>, we can use the
+induction axiom, showing that <span class="math inline">\(q(n)\)</span>
+is true for all <span class="math inline">\(n\)</span>, so <span
+class="math inline">\(p(n)\)</span> is true for all <span
+class="math inline">\(n\)</span>. ◻</p>
+<p>This provides a very useful alternative way of looking at induction.
+Instead of just considering a process from <span
+class="math inline">\(n\)</span> to <span
+class="math inline">\(n+1\)</span>, we can inject an inductive viewpoint
+into any proof. When proving something on the natural numbers, we can
+always assume that the hypothesis is true for smaller <span
+class="math inline">\(n\)</span> than what we are currently using. This
+allows us to write very powerful proofs because in the general case we
+are allowed to refer back to other smaller cases—but not just <span
+class="math inline">\(n-1\)</span>, any <span
+class="math inline">\(k\)</span> less than <span
+class="math inline">\(n\)</span>.</p>
+<p>We may rewrite the principle of strong induction in the following
+ways:</p>
+<ol>
+<li><p>If <span class="math inline">\(p(n)\)</span> is false for some
+<span class="math inline">\(n\)</span>, there must be some <span
+class="math inline">\(m\)</span> where <span
+class="math inline">\(p(m)\)</span> is false and <span
+class="math inline">\(p(k)\)</span> is true for all <span
+class="math inline">\(k&lt;m\)</span>. In other words, if a
+counterexample exists, there must exist a minimal
+counterexample.</p></li>
+<li><p>If <span class="math inline">\(p(n)\)</span> is true for some
+<span class="math inline">\(n\)</span>, then there is a smallest <span
+class="math inline">\(n\)</span> where <span
+class="math inline">\(p(n)\)</span>. In other words, if an example
+exists, there must exist a minimal example. This is known as the
+‘well-ordering principle’.</p></li>
+</ol>
+<h2 id="the-integers-and-rationals">The integers and rationals</h2>
+<p>The integers <span class="math inline">\(\mathbb Z\)</span> consist
+of the set of natural numbers <span class="math inline">\(\mathbb
+N\)</span>, their additive inverses, and an identity element denoted 0.
+In other words, <span class="math inline">\((\mathbb Z, +)\)</span> is
+the group generated by <span class="math inline">\(\mathbb N\)</span>
+and the addition operator: <span class="math inline">\(\mathbb Z =
+\genset{\mathbb N}\)</span>. We define operations in a familiar way, for
+example <span class="math inline">\(a &lt; b \iff \exists c \in \mathbb
+N \st a+c = b\)</span>.</p>
+<p>The rational numbers <span class="math inline">\(\mathbb Q\)</span>
+consist of all expressions denoted <span
+class="math inline">\(\frac{a}{b}\)</span> where <span
+class="math inline">\(a, b \in \mathbb Z\)</span> with <span
+class="math inline">\(b \neq 0\)</span>; with <span
+class="math inline">\(\frac{a}{b}\)</span> regarded as the same as <span
+class="math inline">\(\frac{c}{d}\)</span> if and only if <span
+class="math inline">\(ad=bc\)</span>. We define, for example, <span
+class="math display">\[\frac{a}{b} + \frac{c}{d} = \frac{ad +
+bc}{bd}\]</span> Note that is important to verify with each operation
+that it does not matter how you write a given rational number. For
+example, <span class="math inline">\(\frac{1}{2} + \frac{1}{2} =
+\frac{2}{4} + \frac{3}{6}\)</span>. This means that operations such as
+<span class="math inline">\(\frac{a}{b} \mapsto \frac{a^3}{b^2}\)</span>
+cannot exist because then it would depend on how you write the rational
+number.</p>
+<h2 id="primes">Primes</h2>
+<h3>Proposition</h3>
+<p>Every <span class="math inline">\(n \geq 2\)</span> is expressible as
+a product of primes.</p>
+<h3>Proof</h3>
+<p>We use induction on an integer <span
+class="math inline">\(n\)</span>, starting at 2, a trivial case. Given
+<span class="math inline">\(n &gt; 2\)</span>, we have two cases:</p>
+<ul>
+<li><p><span class="math inline">\(n\)</span> is prime. Therefore, <span
+class="math inline">\(n\)</span> is a product of primes as
+required.</p></li>
+<li><p><span class="math inline">\(n\)</span> is composite. We know that
+<span class="math inline">\(n\)</span> can be split into two factors,
+denoted here as <span class="math inline">\(a\)</span>, <span
+class="math inline">\(b\)</span>. Using (strong) induction, we know that
+because both <span class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span> are smaller than <span
+class="math inline">\(n\)</span>, they are expressible as a product of
+primes. We simply multiply these products together to express <span
+class="math inline">\(n\)</span> as a product of primes.</p></li>
+</ul>
+<p> ◻</p>
+<h3>Proposition</h3>
+<p>There are infinitely many primes.</p>
+<h3>Proof</h3>
+<p>Assume there exists a largest prime. Then, the list of primes is
+<span class="math inline">\(p_1, p_2 \cdots p_k\)</span>. Let <span
+class="math inline">\(n=p_1 p_2 \cdots p_k + 1\)</span>. Then <span
+class="math inline">\(n\)</span> has no prime factor. This is a
+contradiction immediately because we know that every number greater than
+two has a factorisation, but this doesn’t. ◻</p>
+<p>We want to prove that prime factorisation is unique (up to the
+ordering). We need that <span class="math inline">\(p \mid ab \implies p
+\mid a \lor p \mid b\)</span>. However, this is hard to answer—<span
+class="math inline">\(p\)</span> is defined in terms of what divides it,
+not what it divides. This is the reverse of its definition, so we need
+to prove it in a more round-about way.</p>
+<h2 id="highest-common-factors">Highest common factors</h2>
+<p>For <span class="math inline">\(a, b \in \mathbb N\)</span>, a number
+<span class="math inline">\(c \in \mathbb N\)</span> is defined to be
+the highest common factor if:</p>
+<ul>
+<li><p><span class="math inline">\(c \mid a\)</span> and <span
+class="math inline">\(c \mid b\)</span>, and</p></li>
+<li><p>For all other factors <span class="math inline">\(d\)</span>
+(<span class="math inline">\(d \mid a\)</span> and <span
+class="math inline">\(d \mid b\)</span>), we have that <span
+class="math inline">\(d \mid c\)</span>.</p></li>
+</ul>
+<p>The second point implies that it is the <em>highest</em> common
+factor, but it is actually slightly stronger. Note that, for example, if
+a pair’s common factors were 1, 2, 3, 4, 6 then the numbers would not
+have a highest common factor, because 4 does not divide 6.</p>
+<h2 id="the-division-algorithm">The division algorithm</h2>
+<p>The division algorithm allows us to write any number <span
+class="math inline">\(n \in \mathbb N\)</span> as a multiple <span
+class="math inline">\(q\in\mathbb N\)</span> of <span
+class="math inline">\(k\in \mathbb N\)</span> with some remainder <span
+class="math inline">\(r\in\mathbb N\)</span> such that <span
+class="math inline">\(0 \leq r &lt; k\)</span>; this can be shortened to
+<span class="math inline">\(n = qk + r\)</span>. We begin by writing 1
+in this form: <span class="math inline">\(1 = 0k + 1\)</span>.
+Inductively, <span class="math inline">\(n\)</span> can be written as:
+<span class="math display">\[n = (n-1) + 1 = q_0 k + r_0 + 1\]</span>
+where <span class="math inline">\(q_0\)</span> and <span
+class="math inline">\(r_0\)</span> are the results of <span
+class="math inline">\(q\)</span> and <span
+class="math inline">\(r\)</span> for <span
+class="math inline">\(n-1\)</span>. Note that we have two cases:</p>
+<ul>
+<li><p>If <span class="math inline">\(r_0 + 1 &lt; k\)</span>: the
+result is simply <span class="math inline">\(n = q_0k +
+(r_0+1)\)</span></p></li>
+<li><p>Else (<span class="math inline">\(r_0 + 1 = k\)</span>): the
+result is <span class="math inline">\(n = (q_0 + 1)k +
+0\)</span></p></li>
+</ul>
+<h2 id="euclids-algorithm">Euclid’s algorithm</h2>
+<p>We can find the highest common factor of two natural numbers <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span> (without loss of generality, we assume
+that <span class="math inline">\(a \leq b\)</span>). This process is
+known as Euclid’s algorithm.</p>
+<ul>
+<li><p>Write <span class="math inline">\(a\)</span> as some multiple
+<span class="math inline">\(q_1\)</span> of <span
+class="math inline">\(b\)</span>, with remainder <span
+class="math inline">\(r_1\)</span>.</p></li>
+<li><p>Write <span class="math inline">\(b\)</span> as some multiple
+<span class="math inline">\(q_2\)</span> of <span
+class="math inline">\(r_1\)</span>, with remainder <span
+class="math inline">\(r_2\)</span>.</p></li>
+<li><p>Write <span class="math inline">\(r_1\)</span> as some multiple
+<span class="math inline">\(q_3\)</span> of <span
+class="math inline">\(r_2\)</span>, with remainder <span
+class="math inline">\(r_3\)</span>.</p></li>
+<li><p>Continue until <span class="math inline">\(r_{n+1}=0\)</span>.
+Then, <span class="math inline">\(r_n\)</span> is the highest common
+factor of <span class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span>. We know that the algorithm terminates
+because <span class="math inline">\(r_k &lt; r_{k-1}\)</span> so it will
+terminate in at most <span class="math inline">\(b\)</span>
+steps.</p></li>
+</ul>
+<p>We now prove that the algorithm works.</p>
+<h3>Proof</h3>
+<p>We need to prove that it is a common factor and then that it divides
+all other common factors.</p>
+<ul>
+<li><p>On the last line of the algorithm, we have <span
+class="math inline">\(r_{n-1} = q_{n+1} r_n + 0\)</span>, so we know
+that <span class="math inline">\(r_n \mid r_{n-1}\)</span>. On the
+second last line, we have <span class="math inline">\(r_{n-2} = q_n
+r_{n-1} + r_n\)</span>, but <span class="math inline">\(r_n\)</span>
+divides <span class="math inline">\(r_{n-1}\)</span>, so <span
+class="math inline">\(r_n\)</span> must divide <span
+class="math inline">\(r_{n-2}\)</span>. We can continue this logic up to
+the start of the algorithm, where we can see that <span
+class="math inline">\(r_n \mid a\)</span> and <span
+class="math inline">\(r_n \mid b\)</span>. So <span
+class="math inline">\(r_n\)</span> is a common factor of <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span>.</p></li>
+<li><p>Given some other common factor <span class="math inline">\(d \neq
+r_n\)</span>, we can look at the first line of the algorithm to see that
+<span class="math inline">\(d \mid r_1\)</span>. Using this, we can use
+the next line to see that <span class="math inline">\(d \mid
+r_2\)</span>. Continuing to the last line, we have <span
+class="math inline">\(d \mid r_n\)</span>.</p></li>
+</ul>
+<p>So <span class="math inline">\(r_n\)</span> is the highest common
+factor of <span class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span>. Therefore, the highest common factor
+exists and is unique for any natural numbers <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span>. ◻</p>
+<p>Consider running Euclid’s algorithm on the numbers 87 and 52. <span
+class="math display">\[\begin{align*}
+    87 &amp; = 1 \cdot 52 + 35 \\
+    52 &amp; = 1 \cdot 35 + 17 \\
+    35 &amp; = 2 \cdot 17 + 1  \\
+    17 &amp; = 17 \cdot 1 + 0
+\end{align*}\]</span> 1 is the highest common factor of 87 and 52. Now,
+we can write 1 as a linear combination of 87 and 52 by looking at each
+line of this algorithm in the reverse direction (ignoring the bottom
+line). <span class="math display">\[\begin{align*}
+    1 &amp; = 35 - 2 \cdot 17                         \\
+      &amp; = 35 - 2 \cdot (52 - 1 \cdot 35)          \\
+      &amp; = -2 \cdot 52 + 3 \cdot 35                \\
+      &amp; = -2 \cdot 52 + 3 \cdot (87 - 1 \cdot 52) \\
+      &amp; = 3 \cdot 87 - 5 \cdot 52
+\end{align*}\]</span> Each two lines of this equation represents one
+line on Euclid’s algorithm. We end up with a linear combination of the
+two input numbers. We can prove that this linear combination exists in
+the general case.</p>
+<h3>Theorem</h3>
+<p>Let <span class="math inline">\(a, b \in \mathbb N\)</span>. Then
+there exist some <span class="math inline">\(x, y \in \mathbb Z\)</span>
+such that <span class="math inline">\(xa + yb = \HCF(a, b)\)</span>.</p>
+<h3>Proof</h3>
+<p>Run Euclid’s algorithm on <span class="math inline">\(a\)</span> and
+<span class="math inline">\(b\)</span>, and let the output be <span
+class="math inline">\(r_n\)</span>. Then we have <span
+class="math inline">\(r_n = x r_{n-1} + y r_{n-2}\)</span> for some
+<span class="math inline">\(x, y \in \mathbb Z\)</span>. So, <span
+class="math inline">\(r_n\)</span> can be written as a linear
+combination of <span class="math inline">\(r_{n-1}\)</span> and <span
+class="math inline">\(r_{n-2}\)</span>. Also, from the previous line we
+know that <span class="math inline">\(r_{n-1} = x r_{n-2} + y
+r_{n-3}\)</span> for some other <span class="math inline">\(x\)</span>
+and <span class="math inline">\(y\)</span>. So we can rewrite <span
+class="math inline">\(r_{n}\)</span> as a linear combination of <span
+class="math inline">\(r_{n-2}\)</span> and <span
+class="math inline">\(r_{n-3}\)</span>. Inductively, we can rewrite
+<span class="math inline">\(r_n\)</span> as a linear combination of
+<span class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span> by moving up the lines of the
+algorithm. ◻</p>
+<p>We can also make an alternate proof without using Euclid’s algorithm.
+Note that this algorithm does not show how to generate this linear
+combination, it just shows that one exists.</p>
+<h3>Proof</h3>
+<p>Let <span class="math inline">\(h\)</span> be the least positive
+linear combination of <span class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span>. We want to prove that <span
+class="math inline">\(h = \HCF (a, b)\)</span>.</p>
+<ul>
+<li><p>Assume that there exists some common factor <span
+class="math inline">\(d\)</span> of <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span>, so that <span
+class="math inline">\(d\mid a\)</span> and <span
+class="math inline">\(d\mid b\)</span>. Then for some <span
+class="math inline">\(x\)</span> and <span
+class="math inline">\(y\)</span>, <span class="math inline">\(d \mid (xa
++ yb)\)</span>. So <span class="math inline">\(d \mid
+h\)</span>.</p></li>
+<li><p>Suppose <span class="math inline">\(h\)</span> does not divide
+<span class="math inline">\(a\)</span>. Then <span
+class="math inline">\(a = qh + r\)</span> where <span
+class="math inline">\(q\)</span> is the quotient and <span
+class="math inline">\(r\)</span> is the remainder (<span
+class="math inline">\(r \neq 0\)</span>). Then <span
+class="math inline">\(r = a - qh = a - q(xa + yb)\)</span> for some
+integers <span class="math inline">\(x\)</span> and <span
+class="math inline">\(y\)</span>. So <span
+class="math inline">\(r\)</span> is a linear combination of <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span>. But this is a contradiction because we
+said that <span class="math inline">\(h\)</span> was the smallest one.
+So <span class="math inline">\(h\)</span> divides <span
+class="math inline">\(a\)</span>.</p></li>
+</ul>
+<p>Therefore <span class="math inline">\(h\)</span> is the highest
+common factor. ◻</p>
+<h2 id="linear-diophantine-equations">Linear Diophantine equations</h2>
+<p>Suppose <span class="math inline">\(a\)</span>, <span
+class="math inline">\(b\)</span> and <span
+class="math inline">\(c\)</span> are natural numbers. When can we solve
+<span class="math inline">\(ax + by = c\)</span> for <span
+class="math inline">\(x, y \in \mathbb Z\)</span>? Well, by looking at
+the previous theorem, we might guess that <span
+class="math inline">\(c\)</span> must be some multiple of the highest
+common factor of <span class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span>. This can be proven in the general
+case.</p>
+<h3>Corollary</h3>
+<p>Let <span class="math inline">\(a, b, c \in \mathbb N\)</span>. Then
+<span class="math inline">\(ax + by = c\)</span> where <span
+class="math inline">\(x, y \in \mathbb Z\)</span> has a solution if and
+only if <span class="math inline">\(\HCF(a, b) \mid c\)</span>.</p>
+<h3>Proof</h3>
+<p>Let <span class="math inline">\(h = \HCF(a, b)\)</span>. We must
+prove this bi-implication in both directions.</p>
+<ul>
+<li><p>First, let us assume that <span
+class="math inline">\(ax+by=c\)</span> has a solution for some integers
+<span class="math inline">\(x\)</span> and <span
+class="math inline">\(y\)</span>. Since <span class="math inline">\(h
+\mid a\)</span> and <span class="math inline">\(h \mid b\)</span> then
+<span class="math inline">\(h \mid (ax+by)\)</span> so <span
+class="math inline">\(h \mid c\)</span>.</p></li>
+<li><p>Conversely, we know that <span class="math inline">\(h = ax +
+by\)</span> for some <span class="math inline">\(x\)</span> and <span
+class="math inline">\(y\)</span> by the above theorem. We can multiply
+both sides by the integer <span class="math inline">\(c/h\)</span> (this
+is an integer because <span class="math inline">\(h \mid c\)</span>).
+Then we have an expression for <span class="math inline">\(c\)</span> as
+a linear combination of <span class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span> as required.</p></li>
+</ul>
+<p> ◻</p>
+<h2 id="the-fundamental-theorem-of-arithmetic">The fundamental theorem
+of arithmetic</h2>
+<h3>Lemma</h3>
+<p>Let <span class="math inline">\(p\)</span> be a prime, let <span
+class="math inline">\(a, b \in \mathbb N\)</span>. Then <span
+class="math inline">\(p \mid ab\)</span> implies <span
+class="math inline">\(p \mid a\)</span> or <span class="math inline">\(p
+\mid b\)</span>.</p>
+<h3>Proof</h3>
+<p>Let <span class="math inline">\(p \mid ab\)</span>. Then we have two
+cases, either <span class="math inline">\(p\)</span> divides <span
+class="math inline">\(a\)</span> or it does not divide <span
+class="math inline">\(a\)</span>. If it does, our statement is trivially
+true. Otherwise, we want to prove that <span
+class="math inline">\(p\)</span> divides <span
+class="math inline">\(b\)</span>.</p>
+<p>Now <span class="math inline">\(\HCF(p, a)=1\)</span> as <span
+class="math inline">\(p\)</span> is a prime, and it does not divide
+<span class="math inline">\(a\)</span>. So 1 can be written as some
+linear combination of <span class="math inline">\(p\)</span> and <span
+class="math inline">\(a\)</span>: <span class="math inline">\(px + ay =
+1\)</span> for some <span class="math inline">\(x, y \in \mathbb
+Z\)</span>.</p>
+<p>Now we can multiply both sides by <span
+class="math inline">\(b\)</span>, giving <span class="math inline">\(pbx
++ aby = b\)</span>. Since <span class="math inline">\(p\)</span> divides
+<span class="math inline">\(ab\)</span>, <span
+class="math inline">\(p\)</span> must divide the left hand side. So
+<span class="math inline">\(p\)</span> divides <span
+class="math inline">\(b\)</span>. ◻</p>
+<p>Note that we started with a kind of ‘negative’ statement: ‘<span
+class="math inline">\(p\)</span> does not divide <span
+class="math inline">\(a\)</span>’; this told us that we cannot do
+something (namely, factorise it). We turned it into a ‘positive’
+statement: ‘<span class="math inline">\(px + ay = 1\)</span>’; this
+allows us to rearrange to find out information about these variables.
+Converting ‘negative’ statements to ‘positive’ statements is a useful
+tool in making proofs.</p>
+<h3>Theorem</h3>
+<p>Every <span class="math inline">\(n \in \mathbb N\)</span> is
+uniquely expressible as a product of primes.</p>
+<h3>Proof</h3>
+<p>Note that we have already proven that a prime factorisation is
+possible in Section 3.4; we just need to prove uniqueness of a
+factorisation (at least, down to its order). We will use induction on
+some integer <span class="math inline">\(n\)</span> that we wish to
+factorise. Clearly the theorem is true for <span
+class="math inline">\(n=1\)</span> (assuming empty products are valid)
+and <span class="math inline">\(n=2\)</span>.</p>
+<p>So given that <span class="math inline">\(n &gt; 2\)</span> we
+suppose that there exist two possible factorisations: <span
+class="math display">\[n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots
+q_l\]</span> We want to prove that <span
+class="math inline">\(k=l\)</span> and that (after reordering) <span
+class="math inline">\(p_i = q_i\)</span> for all valid <span
+class="math inline">\(i\)</span>.</p>
+<p>We know that <span class="math inline">\(p_1 \mid n\)</span>, so
+<span class="math inline">\(p_1 \mid (q_1 \cdots q_l)\)</span>. So there
+must exist some <span class="math inline">\(i\)</span> where <span
+class="math inline">\(p_1 \mid q_i\)</span>. But since <span
+class="math inline">\(q_i\)</span> is prime, <span
+class="math inline">\(p_1 = q_i\)</span>. Let us reorder the list such
+that <span class="math inline">\(q_i\)</span> is moved to the front, so
+that <span class="math inline">\(p_1 = q_1\)</span>. <span
+class="math display">\[n = p_1 p_2 \cdots p_k = p_1 q_2 \cdots
+q_l\]</span> Now, we divide the entire equation by <span
+class="math inline">\(p_1\)</span> to give <span
+class="math display">\[\frac{n}{p_1} = p_2 \cdots p_k = q_2 \cdots
+q_l\]</span> The integer <span
+class="math inline">\(\frac{n}{p_1}\)</span> is smaller than <span
+class="math inline">\(n\)</span>, so we can use induction to assume that
+its factorisation is unique. Therefore <span
+class="math display">\[[p_2, p_3 \cdots p_k] = [q_2, q_3 \cdots
+q_l]\]</span> So the prime factorisation of <span
+class="math inline">\(n\)</span> is unique. ◻</p>
+<p>The common factors of two numbers <span class="math inline">\(m =
+p_1^{a_1} \cdots p_k^{a_k}\)</span> and <span class="math inline">\(n =
+p_1^{b_1} \cdots p_k^{b_k}\)</span> where <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span> are zero or above is given by <span
+class="math inline">\(p_1^{c_1} \cdots p_k^{c_k}\)</span> where <span
+class="math inline">\(c_i \leq \min(a_i, b_i)\)</span> So the highest
+common factor is given by <span class="math inline">\(c_i = \min(a_i,
+b_i)\)</span>.</p>
+<p>The common multiples of those two numbers is given by <span
+class="math inline">\(d_i \geq \max(a_i, b_i)\)</span>. So analogously
+the lowest common multiple is given by <span class="math inline">\(d_i =
+\max(a_i, b_i)\)</span>.</p>
+<p>We have the interesting property that <span
+class="math inline">\(\HCF(m, n) \LCM(m, n) = mn\)</span>. This is true
+because any term <span class="math inline">\(p_i\)</span> is given by
+<span class="math inline">\(p_i^{\min(a_i, b_i)}p_i^{\max(a_i, b_i)} =
+p_i^{a_i + b_i}\)</span>.</p>
+</main>
+
+<footer>
+  <p><a href="../../">Main Homepage</a></p>
+</footer>
+
+</body>
+</html>

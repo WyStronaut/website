@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>06_functions (MathJax Version)</title>
+  <style>
+    /* Styles will be inserted here */
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+
+<a href="#main">Skip to main content</a>
+
+<header>
+  <h1>06_functions (MathJax Version)</h1>
+</header>
+
+<nav aria-label="Page Navigation">
+  <ul>
+    <li><a href="../">Back to Generated Index</a></li>
+            <li><a href="../mathml/06_functions-mathml.html">Switch to MathML Version</a></li>
+      </ul>
+</nav>
+
+<main id="main">
+<h2 id="definition">Definition</h2>
+<p>For sets <span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span>, a function <span
+class="math inline">\(f\)</span> from <span
+class="math inline">\(A\)</span> to <span
+class="math inline">\(B\)</span> is a rule that assigns to each <span
+class="math inline">\(x \in A\)</span> a unique value <span
+class="math inline">\(f(x) \in B\)</span>. More precisely, a function
+from <span class="math inline">\(A\)</span> to <span
+class="math inline">\(B\)</span> is a set <span class="math inline">\(f
+\subseteq A \times B\)</span> such that for every <span
+class="math inline">\(x \in A\)</span>, there is a unique <span
+class="math inline">\(y \in B\)</span> with <span
+class="math inline">\((x, y) \in f\)</span>. Of course therefore, if
+<span class="math inline">\((x, y) \in f\)</span> then we can write
+<span class="math inline">\(f(x) = y\)</span>. Here are some
+examples.</p>
+<ol>
+<li><p><span class="math inline">\(f\colon \mathbb R \to \mathbb
+R\)</span> given by <span class="math inline">\(f(x) = x^2\)</span>, or
+using an alternative notation, <span class="math inline">\(x \mapsto
+x^2\)</span> is a function.</p></li>
+<li><p>A non-example is <span class="math inline">\(f\colon \mathbb R
+\to \mathbb R\)</span> given by <span class="math inline">\(f(x) =
+\frac{1}{x}\)</span> since it is undefined at <span
+class="math inline">\(x=0\)</span>.</p></li>
+<li><p>Another non-example is <span class="math inline">\(f\colon
+\mathbb R \to \mathbb R\)</span> given by <span
+class="math inline">\(f(x) = \pm \sqrt{\abs{x}}\)</span> since it does
+not define a unique value in the output space for a given input, such as
+<span class="math inline">\(x=2\)</span>.</p></li>
+<li><p><span class="math inline">\(f\colon \mathbb R \to \mathbb
+R\)</span> given by <span class="math display">\[f(x) = \begin{cases}
+                  1 &amp; x \in \mathbb Q  \\
+                  0 &amp; \text{otherwise}
+              \end{cases}\]</span> is a function since it clearly
+satisfies the second definition. Note that even though we don’t know if
+<span class="math inline">\(e + \pi\)</span> is rational or not, the
+function is still well defined since it produces a unique solution for
+<span class="math inline">\(f(e + \pi)\)</span>, we just don’t know
+which output value it gives.</p></li>
+<li><p><span class="math inline">\(A = \{ 1, 2, 3, 4, 5 \}\)</span>,
+<span class="math inline">\(B = \{ 1, 2, 3, 4 \}\)</span>, and <span
+class="math inline">\(f\colon A \to B\)</span> is given by <span
+class="math display">\[\begin{align*}
+              f(1) &amp; = 1 \\
+              f(2) &amp; = 4 \\
+              f(3) &amp; = 3 \\
+              f(4) &amp; = 3 \\
+              f(5) &amp; = 4
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(A = \{ 1, 2, 3 \}\)</span>, <span
+class="math inline">\(f\colon A \to A\)</span> is given by <span
+class="math display">\[\begin{align*}
+              f(1) &amp; = 1 \\
+              f(2) &amp; = 3 \\
+              f(3) &amp; = 2
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(A = \{ 1, 2, 3, 4 \}\)</span>, <span
+class="math inline">\(f\colon A \to A\)</span> is given by <span
+class="math display">\[\begin{align*}
+              f(1) &amp; = 1 \\
+              f(2) &amp; = 3 \\
+              f(3) &amp; = 3 \\
+              f(4) &amp; = 4
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(A = \{ 1, 2, 3, 4 \}\)</span>, <span
+class="math inline">\(B = \{ 1, 2, 3 \}\)</span>, <span
+class="math inline">\(f\colon A \to B\)</span> is given by <span
+class="math display">\[\begin{align*}
+              f(1) &amp; = 3 \\
+              f(2) &amp; = 3 \\
+              f(3) &amp; = 2 \\
+              f(4) &amp; = 1
+\end{align*}\]</span></p></li>
+</ol>
+<h2 id="injection-surjection-and-bijection">Injection, surjection and
+bijection</h2>
+<h3>Definition</h3>
+<p>A function <span class="math inline">\(f\colon A \to B\)</span>
+is</p>
+<ul>
+<li><p>injective, if <span class="math inline">\(\forall a, a&#39; \in
+A\)</span>, we have <span class="math inline">\(a \neq a&#39; \implies
+f(a) \neq f(a&#39;)\)</span>, or equivalently, <span
+class="math inline">\(f(a) = f(a&#39;) \implies a = a&#39;\)</span>, or
+in words, ‘different points stay different’ (e.g. example 6
+above).</p></li>
+<li><p>surjective, if <span class="math inline">\(\forall b \in
+B\)</span>, <span class="math inline">\(\exists a \in A\)</span> such
+that <span class="math inline">\(f(a) = b\)</span>, or in words,
+‘everything in <span class="math inline">\(B\)</span> is hit’ (e.g.
+examples 6 and 8).</p></li>
+<li><p>bijective, if it is injective and surjective, or in words,
+‘everything in <span class="math inline">\(B\)</span> is hit exactly
+once’, or ‘<span class="math inline">\(f\)</span> pairs up elements of
+<span class="math inline">\(A\)</span> and elements of <span
+class="math inline">\(B\)</span>’ (e.g. example 6, or <span
+class="math inline">\(f\colon \mathbb R \to \mathbb R\)</span> given by
+<span class="math inline">\(f(x) = x^3\)</span>).</p></li>
+</ul>
+<h3>Definition</h3>
+<p>For a function <span class="math inline">\(f\colon A \to B\)</span>,
+<span class="math inline">\(A\)</span> is the domain, <span
+class="math inline">\(B\)</span> is the range, and <span
+class="math inline">\(\{ b \in B : \exists a \in A \st f(a) = b
+\}\)</span> is the image.</p>
+<p>We must always provide the domain and range of a function; a
+function’s properties depend on this. For example, is the function <span
+class="math inline">\(f\)</span> defined by <span
+class="math inline">\(f(x) = f^2\)</span> injective? If <span
+class="math inline">\(f\colon \mathbb N \to \mathbb N\)</span>, then it
+is injective, but if <span class="math inline">\(f\colon \mathbb Z \to
+\mathbb Z\)</span>, then it is not.</p>
+<p>There are a number of properties that hold specifically for finite
+sets <span class="math inline">\(A\)</span>, <span
+class="math inline">\(B\)</span>:</p>
+<ol>
+<li><p>There is no surjection <span class="math inline">\(A \to
+B\)</span> if <span class="math inline">\(\abs{B} &gt;
+\abs{A}\)</span>.</p></li>
+<li><p>There is no injection <span class="math inline">\(A \to
+B\)</span> if <span class="math inline">\(\abs{A} &gt;
+\abs{B}\)</span>.</p></li>
+<li><p>For a function <span class="math inline">\(f\colon A \to
+A\)</span>, <span class="math inline">\(f\)</span> injective <span
+class="math inline">\(\iff\)</span> <span
+class="math inline">\(f\)</span> surjective. Hence, if <span
+class="math inline">\(f\)</span> is either injective or surjective, it
+is bijective.</p></li>
+<li><p>There is no bijection from <span class="math inline">\(A\)</span>
+to any proper subset of <span class="math inline">\(A\)</span>.</p></li>
+</ol>
+<p>As counterexamples for infinite sets:</p>
+<ol>
+<li><p>We define <span class="math inline">\(f_0\colon \mathbb N \to
+\mathbb N\)</span> by <span class="math inline">\(f_0(x) = x+1\)</span>.
+Then, <span class="math inline">\(f_0\)</span> is injective but not
+surjective.</p></li>
+<li><p>We define <span class="math inline">\(f_1\colon \mathbb N \to
+\mathbb N\)</span> by <span class="math inline">\(f_0(x) = x-1\)</span>,
+or 1 if <span class="math inline">\(x=1\)</span>. Then, <span
+class="math inline">\(f_0\)</span> is surjective but not
+injective.</p></li>
+<li><p>We define <span class="math inline">\(g\colon \mathbb N \to
+\mathbb N \setminus \{ 1 \}\)</span> by <span class="math inline">\(g(x)
+= x+1\)</span>. Then, <span class="math inline">\(g\)</span> is
+bijective between <span class="math inline">\(\mathbb N\)</span> and a
+proper subset of <span class="math inline">\(\mathbb
+N\)</span>.</p></li>
+</ol>
+<p>We provide some more examples of functions.</p>
+<ol>
+<li><p>For any set <span class="math inline">\(X\)</span> we have <span
+class="math inline">\(1_X\colon X \to X\)</span> defined by <span
+class="math inline">\(1_X(x) = x\)</span>. This is known as the identity
+function on <span class="math inline">\(X\)</span>.</p></li>
+<li><p>For any set <span class="math inline">\(X\)</span>, and <span
+class="math inline">\(A \subset X\)</span>, we have an indicator
+function (or characteristic function) <span
+class="math inline">\(\chi_A\colon X \to \{ 0, 1 \}\)</span> defined by
+<span class="math display">\[\chi_A(x) = \begin{cases}
+                  0 &amp; x \notin A \\
+                  1 &amp; x \in A
+              \end{cases}\]</span></p></li>
+<li><p>A sequence of reals <span class="math inline">\(x_1, x_2,
+\dots\)</span> is a function <span class="math inline">\(f\colon \mathbb
+N \to \mathbb R\)</span> defined by <span class="math inline">\(f(n) =
+x_n\)</span>.</p></li>
+<li><p>The operation <span class="math inline">\(+\)</span> on <span
+class="math inline">\(\mathbb N\)</span> is a function <span
+class="math inline">\(\mathbb N^2 \to \mathbb N\)</span>.</p></li>
+<li><p>A set <span class="math inline">\(X\)</span> has size <span
+class="math inline">\(n\)</span> <span
+class="math inline">\(\iff\)</span> there is a bijection between <span
+class="math inline">\(X\)</span> and <span class="math inline">\(\{ 1,
+2, \dots, n \}\)</span>.</p></li>
+</ol>
+<h2 id="composition-of-functions">Composition of functions</h2>
+<p>Given <span class="math inline">\(f\colon A \to B\)</span> and <span
+class="math inline">\(g\colon B \to C\)</span>, we define the
+composition <span class="math inline">\(g\circ f \colon A \to
+C\)</span>, given by <span class="math inline">\((g\circ f)(a) =
+g(f(a))\)</span>. For example, if <span class="math inline">\(f\colon
+\mathbb R \to \mathbb R\)</span>, <span class="math inline">\(f(x) =
+2x\)</span>, <span class="math inline">\(g\colon \mathbb R \to \mathbb
+R\)</span>, <span class="math inline">\(g(x) = x+1\)</span>, then <span
+class="math inline">\((f \circ g)(x) = 2(x+1)\)</span>, and <span
+class="math inline">\((g \circ f)(x) = 2x + 1\)</span>.</p>
+<p>In general, the operation <span class="math inline">\(\circ\)</span>
+is not commutative, as we can see from this example. However, <span
+class="math inline">\(\circ\)</span> is associative. Given <span
+class="math inline">\(f\colon A \to B\)</span>, <span
+class="math inline">\(g\colon B \to C\)</span>, <span
+class="math inline">\(h\colon C \to D\)</span>, we have <span
+class="math inline">\(h \circ (g \circ f) = (h \circ g) \circ
+f\)</span>. Indeed, for any input <span class="math inline">\(x \in
+A\)</span>, <span class="math display">\[(h \circ (g \circ f))(x) = h((g
+\circ f)(x)) = h(g(f(x))) = (h \circ g)(f(x)) = ((h \circ g)\circ
+f)(x)\]</span> Thus <span class="math inline">\((h \circ (g \circ f))(x)
+= ((h \circ g)\circ f)(x)\)</span> for every <span
+class="math inline">\(x \in A\)</span>, so <span class="math inline">\(h
+\circ (g \circ f) = (h \circ g)\circ f\)</span>.</p>
+<h2 id="invertibility">Invertibility</h2>
+<p>We say that a function <span class="math inline">\(f\colon A \to
+B\)</span> is invertible if there exists some <span
+class="math inline">\(g\colon B \to A\)</span> such that <span
+class="math inline">\(g \circ f = 1_A\)</span> and <span
+class="math inline">\(f \circ g = 1_B\)</span>. For example <span
+class="math inline">\(f\colon \mathbb R \to \mathbb R\)</span> given by
+<span class="math inline">\(f(x)=2x+1\)</span> has inverse <span
+class="math inline">\(g\colon \mathbb R \to \mathbb R\)</span> given by
+<span class="math inline">\(g(x)=\frac{x-1}{2}\)</span>. We can prove
+that this is correct by showing for all real numbers that <span
+class="math inline">\((g\circ f)(x) = x\)</span> and vice versa as
+required.</p>
+<p>As an example, consider <span class="math inline">\(f_0\colon \mathbb
+N \to \mathbb N\)</span> given by <span
+class="math inline">\(f_0(x)=x+1\)</span>, and <span
+class="math inline">\(f_1\colon \mathbb N \to \mathbb N\)</span> given
+by <span class="math inline">\(f_1(x) = x-1\)</span> if <span
+class="math inline">\(x\neq 1\)</span> and 1 if <span
+class="math inline">\(x=1\)</span>. <span class="math inline">\(f_1\circ
+f_0 = 1_{\mathbb N}\)</span> but <span class="math inline">\(f_0\circ
+f_1 \neq 1_{\mathbb N}\)</span> because they disagree at 1. So we must
+check inverses both ways.</p>
+<p>In fact, <span class="math inline">\(f\colon A \to B\)</span> is
+invertible if and only if it is a bijection.</p>
+<ul>
+<li><p>(forward implication) Let <span class="math inline">\(g\)</span>
+be the inverse of <span class="math inline">\(f\)</span>. It is
+surjective because <span class="math inline">\(\forall b \in B\)</span>,
+we have <span class="math inline">\(b=f(g(b))\)</span>. It is injective
+because given two elements <span class="math inline">\(a,a&#39;\)</span>
+such that <span class="math inline">\(f(a) = f(a&#39;)\)</span>, we have
+<span class="math inline">\(g(f(a)) = g(f(a&#39;)) = a = a&#39;\)</span>
+as required. So it is bijective.</p></li>
+<li><p>(backward implication) Suppose <span
+class="math inline">\(f\)</span> is bijective. Let <span
+class="math inline">\(g(b)\)</span> be the unique point <span
+class="math inline">\(a \in A\)</span> with <span
+class="math inline">\(f(a) = b\)</span> for all <span
+class="math inline">\(b \in B\)</span>. Then this <span
+class="math inline">\(g\)</span> is the inverse of <span
+class="math inline">\(f\)</span>.</p></li>
+</ul>
+<h2 id="relations">Relations</h2>
+<p>A relation on a set <span class="math inline">\(X\)</span> is a
+subset of <span class="math inline">\(R \subseteq X \times X\)</span>.
+We usually write <span class="math inline">\(aRb\)</span> to denote
+<span class="math inline">\((a, b) \in R\)</span>. Here are some
+examples.</p>
+<ol>
+<li><p>On <span class="math inline">\(\mathbb N\)</span>, <span
+class="math inline">\(aRb\)</span> if <span class="math inline">\(a
+\equiv b\ (5)\)</span>. For example, <span
+class="math inline">\(2R12\)</span> but not <span
+class="math inline">\(2R11\)</span>.</p></li>
+<li><p>On <span class="math inline">\(\mathbb N\)</span>, <span
+class="math inline">\(aRb\)</span> if <span class="math inline">\(a \mid
+b\)</span>.</p></li>
+<li><p>On <span class="math inline">\(\mathbb N\)</span>, <span
+class="math inline">\(aRb\)</span> if <span class="math inline">\(a \neq
+b\)</span>.</p></li>
+<li><p>On <span class="math inline">\(\mathbb N\)</span>, <span
+class="math inline">\(aRb\)</span> if <span class="math inline">\(a=b
+\pm 1\)</span>.</p></li>
+<li><p>On <span class="math inline">\(\mathbb N\)</span>, <span
+class="math inline">\(aRb\)</span> if <span
+class="math inline">\(\abs{a-b} \leq 2\)</span>.</p></li>
+<li><p>On <span class="math inline">\(\mathbb N\)</span>, <span
+class="math inline">\(aRb\)</span> if either <span
+class="math inline">\(a, b \leq 6\)</span> or <span
+class="math inline">\(a, b &gt; 6\)</span>.</p></li>
+</ol>
+<p>A relation may have a number of important properties:</p>
+<ul>
+<li><p>(reflexive) If <span class="math inline">\(\forall x \in
+X\)</span>, <span class="math inline">\(xRx\)</span>, e.g. examples 1,
+2, 5, 6.</p></li>
+<li><p>(symmetric) If <span class="math inline">\(\forall x, y \in
+X\)</span>, <span class="math inline">\(xRy \implies yRx\)</span>, e.g.
+examples 1, 3, 4, 5, 6.</p></li>
+<li><p>(transitive) If <span class="math inline">\(\forall x, y, z \in
+X\)</span>, <span class="math inline">\(xRy, yRz \implies xRz\)</span>,
+e.g. examples 1, 2, 6.</p></li>
+</ul>
+<p>An equivalence relation is a relation that is reflexive, symmetric
+and transitive. Examples 1, 6 above are equivalence relations. Here are
+some more examples.</p>
+<ol>
+<li><p>On <span class="math inline">\(\mathbb N\)</span>, <span
+class="math inline">\(xRy\)</span> if <span
+class="math inline">\(x=y\)</span>.</p></li>
+<li><p>Considering a partition of set <span
+class="math inline">\(X\)</span> into subsets <span
+class="math inline">\(C_1, C_2, \dots, i \in I\)</span> where the <span
+class="math inline">\(C_i\)</span> are non-empty and disjoint, and their
+union is <span class="math inline">\(X\)</span>. Then consider the
+relation <span class="math inline">\(aRb\)</span> if <span
+class="math inline">\(\exists i\)</span> such that <span
+class="math inline">\(a \in C_i\)</span> and <span
+class="math inline">\(b \in C_i\)</span>. <span
+class="math inline">\(aRb\)</span> is an equivalence relation. In fact,
+all equivalence relations can be considered to be in this form; we will
+prove this shortly.</p></li>
+</ol>
+<p>For an equivalence relation <span class="math inline">\(R\)</span> on
+a set <span class="math inline">\(X\)</span>, and <span
+class="math inline">\(x \in X\)</span>, we define the equivalence class
+<span class="math inline">\([x] = \{ y \in X: y R x \}\)</span>. In the
+first example 1 above, <span class="math inline">\([2] = \{ y \in
+\mathbb N : y \equiv 2\ (5) \}\)</span>.</p>
+<h2 id="equivalence-classes-as-partitions">Equivalence classes as
+partitions</h2>
+<h3>Proposition</h3>
+<p>Let <span class="math inline">\(R\)</span> be an equivalence relation
+on a set <span class="math inline">\(X\)</span>. Then the equivalence
+classes of <span class="math inline">\(R\)</span> partition <span
+class="math inline">\(X\)</span>.</p>
+<h3>Proof</h3>
+<p>Each equivalence class <span class="math inline">\([x]\)</span> is
+non-empty, since <span class="math inline">\(x = x\)</span>. Further,
+<span class="math display">\[\bigcup_{x \in X} = X\]</span> since <span
+class="math inline">\(x \in [x]\)</span> for all <span
+class="math inline">\(x \in X\)</span>. Now we must show that the
+classes are disjoint, or are equal. Given <span class="math inline">\(x,
+y\)</span> with <span class="math inline">\([x] \cap [y] \neq
+\varnothing\)</span>, we need to show that <span
+class="math inline">\([x] = [y]\)</span>. Choose some <span
+class="math inline">\(z\)</span> such that <span class="math inline">\(z
+\in [x] \cap [y]\)</span>. Then, <span
+class="math inline">\(zRx\)</span> and <span
+class="math inline">\(zRy\)</span>, so <span
+class="math inline">\(xRy\)</span>. Thus for any <span
+class="math inline">\(t\)</span>, <span class="math inline">\(tRx
+\implies tRy\)</span> due to transitivity, and <span
+class="math inline">\(tRy \implies tRx\)</span> for the same reason. So
+<span class="math inline">\([x] = [y]\)</span>. ◻</p>
+<p>As an example, does there exist an equivalence relation on <span
+class="math inline">\(\mathbb N\)</span> with three equivalence classes,
+two of which are infinite, and one of which is finite? Yes—we can break
+up <span class="math inline">\(\mathbb N\)</span> into three parts, for
+example positive numbers, negative numbers and zero. This defines an
+equivalence relation.</p>
+<h2 id="quotients">Quotients</h2>
+<p>Given an equivalence relation <span class="math inline">\(R\)</span>
+on a set <span class="math inline">\(X\)</span>, the quotient of <span
+class="math inline">\(X\)</span> by <span
+class="math inline">\(R\)</span> is <span class="math display">\[X/R =
+\{ [x]: x \in X \}\]</span> The map <span class="math inline">\(q\colon
+X\to X/R\)</span> given by <span class="math inline">\(x \mapsto
+[x]\)</span> is called the ‘quotient map’ or ‘projection map’. As an
+example, on <span class="math inline">\(\mathbb Z \times \mathbb
+N\)</span>, let us define <span class="math inline">\((a, b)R(c,
+d)\)</span> to be true if <span class="math inline">\(ad=bc\)</span>.
+This is an equivalence relation that demonstrates equivalence of
+rational numbers, where <span class="math inline">\(a, c\)</span> are
+the numerators and <span class="math inline">\(b, d\)</span> are
+denominators. Here, <span class="math inline">\(\mathbb Z \times \mathbb
+N / R\)</span> is a copy of <span class="math inline">\(\mathbb
+Q\)</span>, associating <span class="math inline">\([(a, b)]\)</span>
+with <span class="math inline">\(a/b\)</span>. Then, <span
+class="math inline">\(q\colon \mathbb Z \times \mathbb N \to \mathbb
+Q\)</span> would map <span class="math inline">\((a, b)\)</span> to
+<span class="math inline">\(a/b\)</span>.</p>
+</main>
+
+<footer>
+  <p><a href="../../">Main Homepage</a></p>
+</footer>
+
+</body>
+</html>
