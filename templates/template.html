@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"$if(lang)$ lang="$lang$" xml:lang="$lang$"$endif$$if(dir)$ dir="$dir$"$endif$>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+$for(author-meta)$
+  <meta name="author" content="$author-meta$" />
+$endfor$
+$if(date-meta)$
+  <meta name="dcterms.date" content="$date-meta$" />
+$endif$
+$if(keywords)$
+  <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+$endif$
+$if(description-meta)$
+  <meta name="description" content="$description-meta$" />
+$endif$
+  <title>$if(title-prefix)$$title-prefix$ ΓÇô $endif$$pagetitle$</title>
+  <style>
+    /* Styles will be inserted here */
+  </style>
+$for(css)$
+  <link rel="stylesheet" href="$css$" />
+$endfor$
+$for(header-includes)$
+  $header-includes$
+$endfor$
+$if(math)$
+  $math$
+$endif$
+</head>
+<body>
+
+<a href="#main">Skip to main content</a>
+
+<header>
+  <h1>$title$</h1>
+</header>
+
+<nav aria-label="Page Navigation">
+  <ul>
+    <li><a href="../index.html">Generated Index</a></li>
+    <li><a href="../../">Main Homepage</a></li>
+    <li>
+      Compare Version
+      <ul>
+        $if(mathml)$
+        <li><a href="../mathjax/$basename$-mathjax.html">MathJax Version</a></li>
+        $endif$
+        $if(mathjax)$
+        <li><a href="../mathml/$basename$-mathml.html">MathML Version</a></li>
+        $endif$
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<main id="main">
+$body$
+</main>
+
+<footer>
+  <p>Generated automatically via build system.</p>
+</footer>
+
+</body>
+</html>
