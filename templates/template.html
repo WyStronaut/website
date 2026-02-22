@@ -40,19 +40,13 @@ $endif$
 
 <nav aria-label="Page Navigation">
   <ul>
-    <li><a href="../index.html">Generated Index</a></li>
-    <li><a href="../../">Main Homepage</a></li>
-    <li>
-      Compare Version
-      <ul>
-        $if(mathml)$
-        <li><a href="../mathjax/$basename$-mathjax.html">MathJax Version</a></li>
-        $endif$
-        $if(mathjax)$
-        <li><a href="../mathml/$basename$-mathml.html">MathML Version</a></li>
-        $endif$
-      </ul>
-    </li>
+    <li><a href="../">Back to Generated Index</a></li>
+    $if(mathml)$
+    <li><a href="../mathjax/$basename$-mathjax.html">Switch to MathJax Version</a></li>
+    $endif$
+    $if(mathjax)$
+    <li><a href="../mathml/$basename$-mathml.html">Switch to MathML Version</a></li>
+    $endif$
   </ul>
 </nav>
 
@@ -61,7 +55,7 @@ $body$
 </main>
 
 <footer>
-  <p>Generated automatically via build system.</p>
+  <p><a href="../../">Main Homepage</a></p>
 </footer>
 
 </body>

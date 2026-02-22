@@ -26,12 +26,16 @@ foreach ($file in $texFiles) {
     # MathML version
     pandoc $file.FullName -s -t html5 --mathml `
       --template=templates/template.html `
-      --metadata title="$name (MathML Version)" `
+      -M "title=$name (MathML Version)" `
+      -M "basename=$name" `
+      -M mathml=true `
       -o "html/mathml/$name-mathml.html"
     # MathJax version
     pandoc $file.FullName -s --mathjax `
       --template=templates/template.html `
-      --metadata title="$name (MathJax Version)" `
+      -M "title=$name (MathJax Version)" `
+      -M "basename=$name" `
+      -M mathjax=true `
       -o "html/mathjax/$name-mathjax.html"
     # Add navigation entry
     $navItems += @"
