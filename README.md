@@ -2,7 +2,7 @@
 
 > **Disclaimer**
 >  
-> This project is currently **vibe-coded with ChatGPT-5** and optimized for a personal accessibility workflow.
+> This project was built with **heavy AI assistance (ChatGPT-5)** as part of a rapid prototyping workflow, and is optimized for a personal accessibility use case.
 >  
 > It is functional for the current repository and source material, but **use caution when scaling it** to larger note sets, different TeX sources, or more automated deployment workflows.
 >  
