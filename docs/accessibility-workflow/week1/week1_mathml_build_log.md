@@ -11,11 +11,11 @@ PowerShell version: 5.1.26100.7705
 
 Repo: WyStronaut/website
 
-Commit hash (website repo): a3f5c9d
+Commit hash (website repo): 8fdca3f
 
 Source repo: zeramorphic/cambridge-maths-notes
 
-Commit hash (source repo): 4b91c2e
+Commit hash (source repo): f03c54c
 ## Goal
 Generate MathML + HTML output for 1 selected IA .tex file.
 
