@@ -1,32 +1,93 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Accessible Math Practice</title>
+  <title>Website Under Transition</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+      line-height: 1.5;
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+    h1, h2 {
+      line-height: 1.2;
+    }
+    .note {
+      border-left: 4px solid #888;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      background: rgba(127,127,127,0.08);
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.95em;
+    }
+    ul {
+      padding-left: 1.25rem;
+    }
+  </style>
 </head>
-
 <body>
+  <main>
+    <h1>Website Temporarily in Transition</h1>
 
-<a href="#main">Skip to main content</a>
+    <p>
+      This site is currently being reworked as part of an accessibility-focused
+      LaTeX-to-HTML workflow project for undergraduate mathematics study.
+    </p>
 
-<header>
-  <h1>Accessible Math Project</h1>
-  <p>This website is now live on Github Pages</p>
-</header>
+    <div class="note" role="note" aria-label="Project status note">
+      <strong>Current status:</strong> the previous Pandoc-rendered site is not the active display baseline.
+      The current development focus is a <strong>tex4ht / make4ht</strong> conversion pipeline
+      with MathML-first output and screen-reader testing (Firefox + NVDA).
+    </div>
 
-<main id="main">
-  <h2>Introduction</h2>
-  <p>
-    This website will eventually host accessible mathematics.
-  </p>
-<a href="html/">Browse Math Content</a>
-</main>
+    <h2>Why this placeholder is here</h2>
+    <p>
+      The repository file system is being retained for now while the tex4ht conversion workflow
+      is stabilized. This allows ongoing experiments and evidence logs to remain organized without
+      breaking existing paths too early.
+    </p>
 
-<footer>
-  <p>Created as part of my accessibility learning project guided by ChatGPT5.2</p>
-</footer>
+    <h2>Planned direction</h2>
+    <ul>
+      <li>Continue improving tex4ht conversion reliability on more complex source .tex files</li>
+      <li>Improve theorem/proof discoverability for screen-reader navigation</li>
+      <li>Reuse the current file system once the tex4ht pipeline is stable enough</li>
+      <li>Simplify structure later (likely removing the dual pipeline comparison)</li>
+    </ul>
 
+    <h2>Repository status</h2>
+    <p>
+      This repository currently contains both:
+    </p>
+    <ul>
+      <li>earlier Pandoc exploration artifacts (kept as evidence and pivot rationale), and</li>
+      <li>current tex4ht experiments and Week 1 evidence logs.</li>
+    </ul>
+
+    <p>
+      If you are reviewing this project, please refer to the evidence and experiment folders for
+      the latest technical progress.
+    </p>
+
+    <hr>
+
+    <p>
+      <small>
+        Placeholder page for workflow transition. Root <code>index.html</code> will be replaced
+        when the tex4ht-based publishing pipeline is stable.
+      </small>
+    </p>
+  </main>
 </body>
 </html>
