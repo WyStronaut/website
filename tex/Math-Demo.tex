@@ -1,0 +1,102 @@
+\DocumentMetadata{
+  lang        = en,
+  pdfstandard = ua-2,
+  pdfstandard = a-4f, %or a-4
+  tagging=on,
+  tagging-setup={math/setup=mathml-SE} 
+}
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+
+% Define and Style Environments
+\newtheorem{theorem}{Theorem}[section]
+\newcommand{\abs}[1]{|#1|}
+\newtheorem{definition}{Definition}[section]
+
+\begin{document}
+
+\title{Spivak Calculus}
+\maketitle
+
+\section{Basic Properties of Numbers}
+\begin{theorem}[Triangle Inequality]
+For all numbers \(a\) and \(b\), we have 
+\[\abs{a+b} \le \abs{a}+\abs{b}\]
+\end{theorem}
+\begin{proof} 
+We know that for all \(x \ge 0\), \(x = \abs{x}\) and for all \(x < 0\), \(x < \abs{x}\), hence \(x \le \abs{x}\). And given a real number \(x\), \(\abs{x} = \sqrt{x^2}\).
+Then
+	\begin{equation}
+		\begin{aligned}
+		\abs{a+b}^2 = (a+b)^2 &= a^2 + 2ab + b^2 \\
+		&= \abs{a}^2 + 2ab + \abs{b}^2 \\
+		&\le \abs{a}^2 + 2\abs{a}\abs{b} + \abs{b}^2 && ab \le \abs{ab} \\
+		&= (\abs{a} + \abs{b})^2 \\
+		\end{aligned}
+	\end{equation}
+Since for all \(x^2 \le y^2\), \(x \le y\), as long as both \(x\) and \(y\) are nonnegative.
+\end{proof}
+
+\section{Numbers of Various Sorts}
+\begin{theorem}[The Principle of Mathematical Induction]
+Let \(n, N \in \mathbb{Z}\), and for all \(n \ge N\), let \(P(n)\) be an open statement. Then if  
+	\begin{description}
+	\item[(i)] \(P(N)\) is true, and
+	\item[(ii)] for all \(k \ge N\), \(P(k) \Rightarrow P(k+1)\) is true
+	\end{description}
+then for all \(n \ge N\), \(P(n)\) is true. 
+\end{theorem}
+\begin{theorem}[The Well-ordering Principle]
+Every nonempty subset of \(\mathbb{N}\) has a least element. 
+\end{theorem}
+\noindent Prove the principle of mathematical induction from the well-ordering principle.
+\begin{proof}
+Let \(n, N \in \mathbb{Z}\), and for all \(n \ge N\), let \(P(n)\) be an open statement. Assume that both \(P(N)\) is true, and for all \(k \ge N\), \(P(k) \Rightarrow P(k+1)\) is true. \\
+Let \[F = \{n \in \mathbb{Z} : n \ge N, \text{ and } P(n) \text{ is false}\}.\]
+\noindent If \(F \ne \emptyset\), then by the Well-Ordering Principle, \(F\) contains a least element, say \(l\). Since \(P(N)\) is true, we know \(l > N\), and thus \(l-1 \ge N\), and \(P(l-1)\) is true. But then by the inductive hypothesis, \(P(l)\) is true, which is a contradiction. Hence \(F = \emptyset\) and thus for all \(n \ge N\), \(P(n)\) is true. 
+\end{proof}
+\section{Functions}
+\begin{definition}
+A \textbf{function} is a collection of pairs of numbers with the following property: if \((a,b)\) and \((a,c)\) are both in the collection, then \(b = c\); in other words, the collection must not contain two different pairs with the same first element. 
+\end{definition}
+\begin{definition}
+If \(f\) is a function, the \textbf{domain} of \(f\) is the set of all \(a\) for which there is some \(b\) such that \((a,b)\) is in \(f\). If \(a\) is in the domain of \(f\), it follows from definition of a function that there is, in fact, a unique number \(b\) such that \((a,b)\) is in \(f\). This unique \(b\) is denoted by \textbf{\(f(a)\)}. 
+\end{definition}
+\begin{definition}
+\[
+(a,b) = \{\{a\}, \{a,b\}\}
+\]
+\end{definition}
+\section{Graphs} 
+The number \abs{a-b} is the distance between \(a\) and \(b\). Then the set of numbers \(x\) which satisfy \(\abs{x-a}< \varepsilon\) may be pictured as the collection of points whose distance from \(a\) is less than \varepsilon 
+\[
+\{x : a-\varepsilon < x < a + \varepsilon\}
+\].
+\section{Limits}
+\begin{definition}
+The function \(f\) approaches the limit \(l\) near \(a\), if we can make \(f(x)\) as close as we like to \(l\) by requiring that \(x\) be sufficiently close to, but unequal to, \(a\).  
+\end{definition}
+\begin{definition}[Precise definition of limit]
+The function \textbf{f approaches the limit l near a} means: for all \(\varepsilon > 0\) there exist \(\delta > 0\) such that, for all \(x\), if \(0 < \abs{x-a} < \delta\), then \(\abs{f(x)-l} < \varepsilon\). 
+\end{definition}
+\noindent We negate the above by saying
+\begin{description}
+	\item there exist \(\varepsilon > 0\) such that for all \(\delta > 0\) there exist \(x\) which satisfies  \(0 < \abs{x-a} < \delta\) but not \(\abs{f(x)-l} < \varepsilon\). 
+\end{description}
+\begin{theorem}
+A function cannot approach two different limits near \(a\). In other words, if \(f\) approaches \(l\) near \(a\), and \(f\) approaches \(m\) near \(a\). then \(l = m\). 
+\end{theorem}
+For all \(\varepsilon > 0\) there exist \(\delta > 0\) such that, for all \(x\),
+\[
+\text{if } 0 < \abs{x-a} < \delta, \text{ then } \abs{f(x)-l} < \varepsilon \text{ and } \abs{f(x)-m} < \varepsilon; 
+\]
+We simply choose \(\delta = min(\delta_1,\delta_2)\). \\
+Hence the number \(l\) which \(f\) approaches near \(a\) is denoted by \(\lim\limits_{x \to a} f(x)\) is possible. 
+\section{Continuous Functions} 
+\section{Three Hard Theorems} 
+\section{Least Upper Bounds}
+
+\end{document}
