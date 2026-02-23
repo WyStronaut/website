@@ -45,16 +45,6 @@ The build script also regenerates a navigation page at `html/index.html` listing
 
 ---
 
-## Source Notes
-
-The current converted HTML files are generated from TeX notes in:
-
-- `zeramorphic/cambridge-maths-notes`, folder `ia/ns`
-
-These source `.tex` files are external to this repository and are passed to the build script via the `sourceDir` parameter.
-
----
-
 ## Accessibility and Testing Status
 
 This repo is focused on making mathematical content easier to navigate and consume, especially for screen-reader users.
