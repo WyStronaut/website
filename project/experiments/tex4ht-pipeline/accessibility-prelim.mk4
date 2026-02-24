@@ -1,0 +1,33 @@
+-- accessibility-prelim.mk4
+-- Reusable make4ht build file for accessibility-oriented experiments
+-- Works now as a normal build file, and includes hook points for later post-processing.
+
+-- One LaTeX pass via tex4ht-enabled pipeline (make4ht will handle tex4ht/t4ht automatically)
+Make:htlatex {}
+
+-- Debug helper: report generated HTML files
+Make:match("html?$", function(filename, settings)
+  print("[make4ht] Generated HTML file: " .. filename)
+  return 0
+end)
+
+-- Future hook 1: HTML post-processing (theorem/proof heading landmarks)
+-- Uncomment and adjust when ready.
+-- Make:match("html?$", function(filename, settings)
+--   -- Example: run a Python post-processor script on each generated HTML file
+--   -- return os.execute('python "..\\..\\scripts\\postprocess_theorem_headings.py" "' .. filename .. '"')
+--   return 0
+-- end)
+
+-- Future hook 2: CSS patch injection / normalization (if needed)
+-- You can post-process CSS files too.
+-- Make:match("css$", function(filename, settings)
+--   print("[make4ht] CSS generated: " .. filename)
+--   return 0
+-- end)
+
+-- Future hook 3: log/validation checks
+-- Example use later:
+-- - scan HTML for <math> tags
+-- - check theorem/proof blocks exist
+-- - fail build if key accessibility markers are missing
