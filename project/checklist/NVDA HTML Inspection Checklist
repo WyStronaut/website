@@ -1,0 +1,66 @@
+Chapter:
+Build target:
+Generated file:
+Date:
+
+[1] Build status
+[x] Build completed (make4ht finished)
+[x] No fatal errors
+[x] Warnings noted (if any): __________________
+
+[2] File open check
+[x] HTML opens
+[x] Page title is sensible
+[x] CSS loaded (page not unstyled)
+
+[3] Heading structure
+[x] First heading is correct
+[x] Heading order is logical (no skipped levels causing confusion)
+[x] Section/subsection names match source
+
+[4] Reading flow (NVDA)
+[x] Top-to-bottom reading is coherent
+[x] No repeated junk text / broken fragments
+[] List navigation works List with 4 items only shows 2 items
+[x] Paragraph breaks sound natural
+
+[5] Theorem-like blocks
+[x] Definition reads clearly
+[x] Claim reads clearly
+[x] Proof reads clearly
+[x] Note reads clearly
+[x] Block boundaries are understandable by speech
+
+[6] Math (inline)
+[x] Inline symbols read acceptably (\implies, \neg, \lor, etc.)
+[x] No missing symbols
+[x] No obvious garbled math
+
+[7] Math (display)
+[x] Display equations are present
+[x] align* / multiline equations read in usable order
+[x] No broken line fragments / stray symbols
+
+[8] Custom macros/symbols
+[x] \contradiction renders/readable
+[x] Other custom macros render/readable
+Notes: __________________
+
+[9] Links / navigation
+[x] Internal links (if any) work
+[x] Back/next links (if any) are sensible
+[x] No broken stylesheet/script links noticed
+
+[10] Visual/theme consistency
+[x] Appearance consistent (not unexpectedly dark/light)
+[x] Source-folder preview and site copy behave as expected (if checked both)
+
+[11] Decision
+[ ] Pass (usable)
+[x] Pass with minor issues
+[ ] Needs fix before next chapter
+
+Priority fixes (max 3):
+1. Theorem environments are CSS styled but not navigable as blocks by NVDA, causing confusion when reading. Consider adding ARIA roles or landmarks to improve block navigation.
+2.
+3.

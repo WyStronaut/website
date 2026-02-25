@@ -1,13 +1,5 @@
  
 /* start css.sty */
-.cmr-5{font-size:50%;}
-.cmr-7{font-size:70%;}
-.cmmi-5{font-size:50%;font-style: italic;}
-.cmmi-7{font-size:70%;font-style: italic;}
-.cmmi-10{font-style: italic;}
-.cmsy-5{font-size:50%;}
-.cmsy-7{font-size:70%;}
-.cmbx-10{ font-weight: bold;}
 .cmbsy-10{font-weight: bold;}
 .cmbsy-10{font-weight: bold;}
 .cmbsy-10{font-weight: bold;}
@@ -19,7 +11,17 @@
 .cmbsy-5{font-weight: bold;}
 .cmex-7{font-size:70%;}
 .cmex-7x-x-71{font-size:49%;}
-.cmti-10{ font-style: italic;}
+.cmr-7{font-size:70%;}
+.cmr-5{font-size:50%;}
+.cmmi-10{font-style: italic;}
+.cmmi-7{font-size:70%;font-style: italic;}
+.cmmi-5{font-size:50%;font-style: italic;}
+.cmsy-7{font-size:70%;}
+.cmsy-5{font-size:50%;}
+.rm-lmr-17{font-size:170%;}
+.rm-lmr-12{font-size:120%;}
+.rm-lmbx-10{ font-weight: bold;}
+.rm-lmri-10{ font-style:italic;}
 p{margin-top:0;margin-bottom:0}
 p.indent{text-indent:0;}
 p + p{margin-top:1em;}
@@ -41,7 +43,7 @@ h1,h2,h3,h4,h5 { line-height:1.2; }
 .sectionHead, .likesectionHead { font-size: 1.5157em; }
 .subsectionHead, .likesubsectionHead { font-size: 1.3195em; }
 .subsubsectionHead, .likesubsubsectionHead { font-size: 1.1487em; }
- @media (prefers-color-scheme: dark) { img[src^="smoke-test"]{filter: invert(1); } } 
+ @media (prefers-color-scheme: dark) { img[src^="main"]{filter: invert(1); } } 
  body { background-color: Canvas; color: CanvasText; color-scheme: light dark; } 
 li p.indent { text-indent: 0em }
 li p:first-child{ margin-top:0em; }
@@ -161,10 +163,64 @@ p + figcaption, img + figcaption{margin-top: 1em;}
 .thebibliography dl { display: grid; grid-auto-columns: min-content 1fr; grid-auto-flow: column; }
 .thebibliography dt { grid-column: 1; margin-bottom: 0.5em; }
 .abstract{margin:1em;}
+.small-caps{font-variant: small-caps;}
 .equation-star td{text-align:center; vertical-align:middle; }
 table.equation-star { width:100%; } 
 .boxed{border: 1px solid black; padding-left:2px; padding-right:2px;}
 mtd.align-odd{margin-left:2em; text-align:right;}
 mtd.align-even{margin-right:2em; text-align:left;}
+.caption span.id{font-weight: bold;}
+ .wrapfig-r, .wrapfig-ri, .wrapfig-ir, .wrapfig-ro, .wrapfig-or {float:right; text-align:left; margin-left:auto; margin-top:0.5em;} 
+ .wrapfig-l, .wrapfig-li, .wrapfig-il, .wrapfig-lo, .wrapfig-ol {float:left; text-align:left; margin-right:auto; margin-top:0.5em;} 
+.wrapfig-r .caption td.content, .wrapfig-ri .caption td.content, .wrapfig-ir .caption td.content, .wrapfig-ro .caption td.content, .wrapfig-or .caption td.content, .wrapfig-l .caption td.content, .wrapfig-li .caption td.content, .wrapfig-il .caption td.content, .wrapfig-lo .caption td.content, .wrapfig-ol .caption td.content {white-space: normal; }
+.wrapfig-r .caption, .wrapfig-ri .caption, .wrapfig-ir .caption, .wrapfig-ro .caption, .wrapfig-or .caption, .wrapfig-l .caption, .wrapfig-li .caption, .wrapfig-il .caption, .wrapfig-lo .caption, .wrapfig-ol .caption {width:30%; }
+dl.enumerate-enumitem{display:grid; grid-template-columns: min-content 1fr; align-items: top; row-gap:0ch;}
+dt.enumerate-enumitem{text-align: right;}
+dd.enumerate-enumitem{margin-left:1ch;}
+div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }
+table.tabular td p{margin-top:0em;}
+table.tabular {margin-left: auto; margin-right: auto;}
+td p:first-child{ margin-top:0em; }
+td p:last-child{ margin-bottom:0em; }
+div.td00{ margin-left:0pt; margin-right:0pt; }
+div.td01{ margin-left:0pt; margin-right:5pt; }
+div.td10{ margin-left:5pt; margin-right:0pt; }
+div.td11{ margin-left:5pt; margin-right:5pt; }
+table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+td.td00{ padding-left:0pt; padding-right:0pt; }
+td.td01{ padding-left:0pt; padding-right:5pt; }
+td.td10{ padding-left:5pt; padding-right:0pt; }
+td.td11{ padding-left:5pt; padding-right:5pt; }
+table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+.hline hr, .cline hr{ height : 0px; margin:0px; }
+.hline td, .cline td{ padding: 0; }
+.hline hr, .cline hr{border:none;border-top:1px solid black;}
+.hline {border-top: 1px solid black;}
+.hline + .vspace:last-child{display:none;}
+.hline:first-child{border-bottom:1px solid black;border-top:none;}
+.rotatebox{display: inline-block;}
+span.Xy span.Y{ position:relative; top:0.35ex;left:-0.25em;}
+.textls{letter-spacing:0.05rem;}
+.tcolorbox{margin-top:0.5em;margin-bottom: 0.5em;}
+.tcolorbox .lowerbox{margin-top:0pt;}
+div.verbatiminput {font-family: monospace,monospace; white-space: nowrap; }
+#tcolobox-1 .tcolorbox-title{color: #FFFFFF; background-color: #FFFFFF;}
+#tcolobox-1 .tcolorbox-content{color: #000000; background-color: #D7F8EB; border: 1px solid #FFFFFF;}
+#tcolobox-1 > div{ padding-top:8.5358px; padding-bottom:8.5358px; padding-left:14.22635px; padding-right:14.22635px; }
+#tcolobox-2 .tcolorbox-title{color: #FFFFFF; background-color: #FFFFFF;}
+#tcolobox-2 .tcolorbox-content{color: #000000; background-color: #E6F4FF; border: 1px solid #FFFFFF;}
+#tcolobox-2 > div{ padding-top:8.5358px; padding-bottom:8.5358px; padding-left:14.22635px; padding-right:14.22635px; }
+#tcolobox-3 .tcolorbox-title{color: #FFFFFF; background-color: #FFFFFF;}
+#tcolobox-3 .tcolorbox-content{color: #000000; background-color: #E6F4FF; border: 1px solid #FFFFFF;}
+#tcolobox-3 > div{ padding-top:8.5358px; padding-bottom:8.5358px; padding-left:14.22635px; padding-right:14.22635px; }
+#tcolobox-4 .tcolorbox-title{color: #FFFFFF; background-color: #FFFFFF;}
+#tcolobox-4 .tcolorbox-content{color: #000000; background-color: #E6F4FF; border: 1px solid #FFFFFF;}
+#tcolobox-4 > div{ padding-top:8.5358px; padding-bottom:8.5358px; padding-left:14.22635px; padding-right:14.22635px; }
+#tcolobox-5 .tcolorbox-title{color: #FFFFFF; background-color: #FFFFFF;}
+#tcolobox-5 .tcolorbox-content{color: #000000; background-color: #E6F4FF; border: 1px solid #FFFFFF;}
+#tcolobox-5 > div{ padding-top:8.5358px; padding-bottom:8.5358px; padding-left:14.22635px; padding-right:14.22635px; }
+#tcolobox-6 .tcolorbox-title{color: #FFFFFF; background-color: #FFFFFF;}
+#tcolobox-6 .tcolorbox-content{color: #000000; background-color: #E6F4FF; border: 1px solid #FFFFFF;}
+#tcolobox-6 > div{ padding-top:8.5358px; padding-bottom:8.5358px; padding-left:14.22635px; padding-right:14.22635px; }
 /* end css.sty */
 

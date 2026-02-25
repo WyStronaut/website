@@ -1,6 +1,6 @@
 # Complex File tex4ht / make4ht Test Log (`mathml,mathjax` baseline)
 
-- **Date:** YYYY-MM-DD
+- **Date:** 2026-02-24
 - **Tester:** Yexuan
 - **OS:** Windows 11 Home 24H2 (Build 26100)
 - **TeX distribution:** TeX Live 2025
