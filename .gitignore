@@ -1,0 +1,32 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Python / misc
+__pycache__/
+*.pyc
+
+# Temporary build folders
+site/**/build-temp/
+**/build/
+**/tmp/
+**/temp/
+
+# TeX / make4ht transient artifacts (generic)
+*.aux
+*.log
+*.tmp
+*.xref
+*.4ct
+*.4tc
+*.dvi
+*.idv
+*.lg
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+
+# Keep selected HTML/CSS outputs only when intentionally copied into tracked folders
+# (Do not globally ignore *.html or *.css, since project docs/checklists/site outputs use them)
