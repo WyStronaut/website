@@ -1,12 +1,11 @@
 param(
     [string]$SourceDir = "src\tex\",
     [string]$SiteDir = "site",
-    [string]$PagesSubDir = "mathmlmj",
     [string]$InputSubDir = "input",          # optional subfolder under SourceDir (directory mode only)
     [switch]$Recurse = $true,
     [switch]$Clean = $true,
     [switch]$BuildInPlace = $false,          # if set, run make4ht in the source file's folder (preserves relative includes/packages)
-    [switch]$AllowMake4htErrors = $false     # if set, continue when make4ht exits nonzero but HTML output exists
+    [switch]$AllowMake4htErrors = $true      # if set, continue when make4ht exits nonzero but HTML output exists (default: true for debugging)
 )
 
 Set-StrictMode -Version Latest
@@ -107,41 +106,54 @@ function Show-Make4htFailureDetails {
 function Cleanup-InPlaceBuildArtifacts {
     param(
         [Parameter(Mandatory = $true)][string]$WorkDir,
-        [Parameter(Mandatory = $true)][string]$BaseName
+        [Parameter(Mandatory = $true)][string]$BaseName,
+        [switch]$Aggressive = $false  # if true, remove everything except main.html and main.css
     )
 
-    # Remove common LaTeX / TeX4ht artifacts for THIS built file only.
-    # Keep the generated .html and .css in source folder for inspection.
-    $artifactExtensions = @(
-        ".aux", ".dvi", ".idv", ".lg", ".log", ".tmp", ".xref",
-        ".4ct", ".4tc", ".bcf", ".blg", ".out", ".toc", ".lof", ".lot",
-        ".run.xml", ".fdb_latexmk", ".fls", ".xdv", ".pdf"
-    )
-
-    foreach ($ext in $artifactExtensions) {
-        $artifactPath = Join-Path $WorkDir ($BaseName + $ext)
-        if (Test-Path -LiteralPath $artifactPath -PathType Leaf) {
-            Remove-Item -LiteralPath $artifactPath -Force -ErrorAction SilentlyContinue
-        }
-    }
-
-    # Remove common TeX4ht image artifacts with basename prefix
-    $prefixPatterns = @(
-        "$BaseName-*.svg",
-        "$BaseName*.svg",
-        "$BaseName-*.png",
-        "$BaseName*.png",
-        "$BaseName-*.jpg",
-        "$BaseName*.jpg",
-        "$BaseName-*.jpeg",
-        "$BaseName*.jpeg",
-        "$BaseName-*.gif",
-        "$BaseName*.gif"
-    )
-
-    foreach ($pattern in $prefixPatterns) {
-        Get-ChildItem -Path $WorkDir -Filter $pattern -File -ErrorAction SilentlyContinue |
+    if ($Aggressive) {
+        # Aggressive cleanup: remove all generated files except main.html, main.css, source .tex files, and main.pdf
+        Get-ChildItem -Path $WorkDir -File -ErrorAction SilentlyContinue |
+            Where-Object {
+                $_.Name -ne "$BaseName.html" -and
+                $_.Name -ne "$BaseName.css" -and
+                $_.Extension -ne ".tex" -and
+                $_.Name -ne "$BaseName.pdf"
+            } |
             Remove-Item -Force -ErrorAction SilentlyContinue
+    } else {
+        # Standard cleanup: remove common LaTeX / TeX4ht artifacts for THIS built file only.
+        # Keep the generated .html and .css in source folder for inspection.
+        $artifactExtensions = @(
+            ".aux", ".dvi", ".idv", ".lg", ".log", ".tmp", ".xref",
+            ".4ct", ".4tc", ".bcf", ".blg", ".out", ".toc", ".lof", ".lot",
+            ".run.xml", ".fdb_latexmk", ".fls", ".xdv", ".pdf"
+        )
+
+        foreach ($ext in $artifactExtensions) {
+            $artifactPath = Join-Path $WorkDir ($BaseName + $ext)
+            if (Test-Path -LiteralPath $artifactPath -PathType Leaf) {
+                Remove-Item -LiteralPath $artifactPath -Force -ErrorAction SilentlyContinue
+            }
+        }
+
+        # Remove common TeX4ht image artifacts with basename prefix
+        $prefixPatterns = @(
+            "$BaseName-*.svg",
+            "$BaseName*.svg",
+            "$BaseName-*.png",
+            "$BaseName*.png",
+            "$BaseName-*.jpg",
+            "$BaseName*.jpg",
+            "$BaseName-*.jpeg",
+            "$BaseName*.jpeg",
+            "$BaseName-*.gif",
+            "$BaseName*.gif"
+        )
+
+        foreach ($pattern in $prefixPatterns) {
+            Get-ChildItem -Path $WorkDir -Filter $pattern -File -ErrorAction SilentlyContinue |
+                Remove-Item -Force -ErrorAction SilentlyContinue
+        }
     }
 }
 
@@ -154,9 +166,7 @@ $ScriptRoot = if ($PSScriptRoot) { $PSScriptRoot } else { (Get-Location).Path }
 # Derived paths (absolute)
 # ------------------------------------------------------------
 $SiteDirAbs     = if ([System.IO.Path]::IsPathRooted($SiteDir)) { $SiteDir } else { Join-Path $ScriptRoot $SiteDir }
-$PagesOutputDir = Join-Path $SiteDirAbs $PagesSubDir
-$AssetsDir      = Join-Path $PagesOutputDir "assets"
-$BuildTempDir   = Join-Path $PagesOutputDir "build-temp"
+$BuildTempDir   = Join-Path $SiteDirAbs "build-temp"
 
 # ------------------------------------------------------------
 # Resolve source path (supports directory OR single .tex file)
@@ -181,12 +191,39 @@ if (Test-Path -LiteralPath $SourcePathAbs -PathType Leaf) {
     $singleTexFile = Get-Item -LiteralPath $SourcePathAbs
 
     $singleFileDir = $singleTexFile.Directory.FullName
-    $commonBase = Get-CommonPathPrefix -PathA $ScriptRoot -PathB $singleFileDir
 
-    if ($null -ne $commonBase -and (Test-Path -LiteralPath $commonBase -PathType Container)) {
-        $resolvedSourceFull = (Resolve-Path -LiteralPath $commonBase).Path
+    # Find project root by searching upward for util.sty (marker file)
+    $projectRoot = $null
+    $searchDir = $singleFileDir
+    $maxDepth = 10
+    $depth = 0
+    Write-Step "Searching for project root from: $singleFileDir"
+    while ($depth -lt $maxDepth -and $null -eq $projectRoot) {
+        $checkPath = Join-Path $searchDir "util.sty"
+        if (Test-Path -LiteralPath $checkPath) {
+            Write-Step "Found util.sty at: $searchDir"
+            $projectRoot = $searchDir
+            break
+        }
+        $parent = Split-Path -Path $searchDir -Parent
+        if ($parent -eq $searchDir) { break }  # reached root
+        $searchDir = $parent
+        $depth++
+    }
+    if ($null -eq $projectRoot) {
+        Write-Step "util.sty not found; using fallback logic"
+    }
+
+    # If found project root, use it; otherwise use common base with script root
+    if ($null -ne $projectRoot) {
+        $resolvedSourceFull = (Resolve-Path -LiteralPath $projectRoot).Path
     } else {
-        $resolvedSourceFull = $singleFileDir
+        $commonBase = Get-CommonPathPrefix -PathA $ScriptRoot -PathB $singleFileDir
+        if ($null -ne $commonBase -and (Test-Path -LiteralPath $commonBase -PathType Container)) {
+            $resolvedSourceFull = (Resolve-Path -LiteralPath $commonBase).Path
+        } else {
+            $resolvedSourceFull = $singleFileDir
+        }
     }
 }
 elseif (Test-Path -LiteralPath $SourcePathAbs -PathType Container) {
@@ -197,7 +234,32 @@ elseif (Test-Path -LiteralPath $SourcePathAbs -PathType Container) {
         $resolvedSource = $candidateInput
     }
 
-    $resolvedSourceFull = (Resolve-Path -LiteralPath $resolvedSource).Path
+    # For directory source, search upward for project root (util.sty) for relative path resolution
+    # But keep the original source directory for finding .tex files to build
+    $projectRoot = $null
+    $searchDir = (Resolve-Path -LiteralPath $resolvedSource).Path
+    $sourceForFileDiscovery = $searchDir  # Keep the original source directory
+    $maxDepth = 10
+    $depth = 0
+    Write-Step "Searching for project root from: $searchDir"
+    while ($depth -lt $maxDepth -and $null -eq $projectRoot) {
+        $checkPath = Join-Path $searchDir "util.sty"
+        if (Test-Path -LiteralPath $checkPath) {
+            Write-Step "Found util.sty at: $searchDir"
+            $projectRoot = $searchDir
+            break
+        }
+        $parent = Split-Path -Path $searchDir -Parent
+        if ($parent -eq $searchDir) { break }  # reached root
+        $searchDir = $parent
+        $depth++
+    }
+    if ($null -eq $projectRoot) {
+        Write-Step "util.sty not found; using provided source directory"
+        $projectRoot = $resolvedSource
+    }
+
+    $resolvedSourceFull = (Resolve-Path -LiteralPath $projectRoot).Path
 }
 else {
     Write-Host "Source path not found: $SourcePathAbs"
@@ -205,6 +267,8 @@ else {
 }
 
 $repoRootFull = (Resolve-Path -LiteralPath $ScriptRoot).Path
+
+Write-Step "Resolved source base: $resolvedSourceFull"
 
 # ------------------------------------------------------------
 # Validate tool
@@ -219,39 +283,30 @@ if (-not $make4htCmd) {
 # Ensure output folders exist
 # ------------------------------------------------------------
 Ensure-Dir $SiteDirAbs
-Ensure-Dir $PagesOutputDir
-Ensure-Dir $AssetsDir
 Ensure-Dir $BuildTempDir
 
 # ------------------------------------------------------------
-# Clean generated output (keeps root landing page untouched)
-# ------------------------------------------------------------
-if ($Clean) {
-    Write-Step "Cleaning generated files in $SiteDirAbs"
-
-    Get-ChildItem -Path $PagesOutputDir -Filter "*.html" -File -Recurse -ErrorAction SilentlyContinue |
-        Remove-Item -Force -ErrorAction SilentlyContinue
-
-    $generatedSiteIndex = Join-Path $SiteDirAbs "index.html"
-    if (Test-Path -LiteralPath $generatedSiteIndex) {
-        Remove-Item -LiteralPath $generatedSiteIndex -Force -ErrorAction SilentlyContinue
-    }
-
-    Get-ChildItem -Path $BuildTempDir -ErrorAction SilentlyContinue |
-        Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
-}
-
-# ------------------------------------------------------------
 # Find .tex files (array-normalized)
+# When source is a directory, only build main.tex (other .tex files are \input dependencies)
 # ------------------------------------------------------------
 if ($sourceIsFile) {
     $texFiles = @($singleTexFile)
 }
 else {
-    if ($Recurse) {
-        $texFiles = @(Get-ChildItem -Path $resolvedSourceFull -Filter "*.tex" -File -Recurse)
+    # For directory source, build from the specified source directory, not the project root
+    $searchDir = if ($null -ne $sourceForFileDiscovery) { $sourceForFileDiscovery } else { $resolvedSourceFull }
+
+    # Look for main.tex first (primary entry point)
+    $mainTexPath = Join-Path $searchDir "main.tex"
+    if (Test-Path -LiteralPath $mainTexPath -PathType Leaf) {
+        $texFiles = @(Get-Item -LiteralPath $mainTexPath)
     } else {
-        $texFiles = @(Get-ChildItem -Path $resolvedSourceFull -Filter "*.tex" -File)
+        # Fallback: if no main.tex, look for other .tex files
+        if ($Recurse) {
+            $texFiles = @(Get-ChildItem -Path $searchDir -Filter "*.tex" -File -Recurse)
+        } else {
+            $texFiles = @(Get-ChildItem -Path $searchDir -Filter "*.tex" -File)
+        }
     }
 }
 
@@ -284,61 +339,54 @@ if ($AllowMake4htErrors) {
 }
 
 # ------------------------------------------------------------
+# Copy the entire project root to build-temp (once) to preserve all relative paths
+# (e.g., ../../util.sty, ../../tex_vendor/, etc.)
+# This must happen before the file loop
+$tempProjectDir = $null
+if (-not $BuildInPlace) {
+    $projectRootName = Split-Path -Path $resolvedSourceFull -Leaf
+    $tempProjectDir = Join-Path $BuildTempDir $projectRootName
+
+    if (Test-Path -LiteralPath $tempProjectDir) {
+        Remove-Item -LiteralPath $tempProjectDir -Recurse -Force -ErrorAction SilentlyContinue
+    }
+
+    Write-Step "Copying entire project from: $resolvedSourceFull to $tempProjectDir"
+    Copy-Item -LiteralPath $resolvedSourceFull -Destination $tempProjectDir -Recurse -Force
+}
+
 # Build files with make4ht (mathml,mathjax, LuaLaTeX)
-# Preserve source folder structure under site\mathmlmj\
+# Preserve source folder structure under site\
 # ------------------------------------------------------------
 $navItems = @()
 
 foreach ($file in $texFiles) {
     $name = [System.IO.Path]::GetFileNameWithoutExtension($file.Name)
 
-    $relativeTexPath = Get-RelativePathSafe -BasePath $resolvedSourceFull -TargetPath $file.FullName
-    if ($relativeTexPath.StartsWith("..\")) {
-        $relativeTexPath = $file.Name
+    # Get relative path from PROJECT ROOT (for output organization)
+    $relPathFromProjectRoot = Get-RelativePathSafe -BasePath $resolvedSourceFull -TargetPath $file.FullName
+    if ($relPathFromProjectRoot.StartsWith("..\")) {
+        $relPathFromProjectRoot = $file.Name
     }
 
-    $relativeFolder = Split-Path -Path $relativeTexPath -Parent
-    if ($null -eq $relativeFolder -or $relativeFolder -eq ".") {
-        $relativeFolder = ""
-    }
-
-    $relativeHtmlPath = [System.IO.Path]::ChangeExtension($relativeTexPath, ".html")
-    $finalHtml = Join-Path $PagesOutputDir $relativeHtmlPath
+    # Include project folder name in output path (e.g., site/cambridge-maths-notes/ia/ns/main.html)
+    $projectRootName = Split-Path -Path $resolvedSourceFull -Leaf
+    $relativeHtmlPath = [System.IO.Path]::ChangeExtension((Join-Path $projectRootName $relPathFromProjectRoot), ".html")
+    $finalHtml = Join-Path $SiteDirAbs $relativeHtmlPath
     $finalHtmlDir = Split-Path -Path $finalHtml -Parent
     Ensure-Dir $finalHtmlDir
 
-    # temp path (used only when not building in place)
-    $tempBuildSubPath = if ([string]::IsNullOrWhiteSpace($relativeFolder)) { $name } else { Join-Path $relativeFolder $name }
-    $tempDir = Join-Path $BuildTempDir $tempBuildSubPath
-
     if ($BuildInPlace) {
         $workDir = $file.DirectoryName
-        Write-Step "Building in place: $relativeTexPath"
+        Write-Step "Building in place: $relPathFromProjectRoot"
     } else {
-        Ensure-Dir $tempDir
-        $workDir = $tempDir
-        Write-Step "Building (temp) $relativeTexPath"
+        # Map the source file location to the copied project location in build-temp
+        $workDir = Join-Path $tempProjectDir (Split-Path -Path $relPathFromProjectRoot -Parent)
+        Write-Step "Building (temp) $relPathFromProjectRoot -> $workDir"
     }
 
     Push-Location $workDir
     try {
-        if (-not $BuildInPlace) {
-            # Copy .tex source into isolated temp folder
-            Copy-Item -LiteralPath $file.FullName -Destination $file.Name -Force
-
-            # Copy same-basename companion files if present in source folder
-            $sourceFolder = $file.DirectoryName
-            $possibleCompanions = @(
-                "$name.sty", "$name.cls", "$name.bib", "$name.cfg", "$name.mk4"
-            )
-
-            foreach ($comp in $possibleCompanions) {
-                $compPath = Join-Path $sourceFolder $comp
-                if (Test-Path -LiteralPath $compPath) {
-                    Copy-Item -LiteralPath $compPath -Destination $comp -Force
-                }
-            }
-        }
 
         # Use LuaLaTeX + UTF-8 via combined short options (-ul)
         & make4ht -ul $file.Name "mathml,mathjax"
@@ -361,19 +409,22 @@ foreach ($file in $texFiles) {
         }
 
         # Copy generated HTML to final destination
-        Copy-Item -LiteralPath $builtHtml -Destination $finalHtml -Force
+        Write-Step "Copying HTML: $builtHtml -> $finalHtml"
+        Copy-Item -LiteralPath $builtHtml -Destination $finalHtml -Force -ErrorAction Stop
 
-        # Copy assets from working folder (flat assets folder in site\mathmlmj\assets)
+        # Copy assets (CSS, JS, fonts, images) to same folder as HTML
         $generatedAssets = Get-ChildItem -Path $workDir -File -ErrorAction SilentlyContinue |
             Where-Object { $_.Extension -in @(".css", ".js", ".png", ".svg", ".woff", ".woff2", ".ttf") }
 
         foreach ($asset in $generatedAssets) {
-            Copy-Item -LiteralPath $asset.FullName -Destination (Join-Path $AssetsDir $asset.Name) -Force
+            $assetDest = Join-Path $finalHtmlDir $asset.Name
+            Write-Step "Copying asset: $($asset.Name)"
+            Copy-Item -LiteralPath $asset.FullName -Destination $assetDest -Force -ErrorAction Stop
         }
 
         # Nav metadata for generated site\index.html
         $relativeSourceDisplay = ".\" + (Get-RelativePathSafe -BasePath $repoRootFull -TargetPath $file.FullName)
-        $outputHref = ($PagesSubDir + "/" + ($relativeHtmlPath -replace '\\','/'))
+        $outputHref = ($relativeHtmlPath -replace '\\','/')
 
         $navItems += [PSCustomObject]@{
             Name       = $name
@@ -382,11 +433,11 @@ foreach ($file in $texFiles) {
             OutputPath = $relativeHtmlPath
         }
 
-        Write-Step "Built $relativeTexPath -> $finalHtml"
+        Write-Step "Built $relPathFromProjectRoot -> $finalHtml"
 
         if ($BuildInPlace) {
-            Cleanup-InPlaceBuildArtifacts -WorkDir $workDir -BaseName $name
-            Write-Step "Cleaned in-place build artifacts in $workDir (kept $name.html and $name.css if present)"
+            Cleanup-InPlaceBuildArtifacts -WorkDir $workDir -BaseName $name -Aggressive
+            Write-Step "Cleaned in-place build artifacts in $workDir (only $name.html and $name.css remain)"
         }
     }
     finally {
@@ -396,45 +447,58 @@ foreach ($file in $texFiles) {
 
 # ------------------------------------------------------------
 # Generate site\index.html (index of generated pages)
+# DISABLED: unlicensed content, do not publish to GitHub Pages
 # ------------------------------------------------------------
-Write-Step "Generating $(Join-Path $SiteDirAbs 'index.html')"
-
-$listItems = ($navItems | Sort-Object OutputPath | ForEach-Object {
-@"
-      <li>
-        <a href="$($_.OutputHref)">$($_.Name)</a><br>
-        <small>Output: <code>$($_.OutputPath -replace '\\','/')</code></small><br>
-        <small>Source: <code>$($_.Source)</code></small>
-      </li>
-"@
-}) -join "`n"
-
-$indexHtml = @"
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Generated Math Content</title>
-</head>
-<body>
-  <main>
-    <h1>Generated Math Content</h1>
-    <p>Auto-generated by build.ps1 (tex4ht / make4ht workflow).</p>
-
-    <h2>Available Files</h2>
-    <ul>
-$listItems
-    </ul>
-
-    <p><a href="../index.html">Return to Main Homepage</a></p>
-  </main>
-</body>
-</html>
-"@
-
-Set-Content -Path (Join-Path $SiteDirAbs "index.html") -Value $indexHtml -Encoding UTF8
+# Write-Step "Generating $(Join-Path $SiteDirAbs 'index.html')"
+#
+# $listItems = ($navItems | Sort-Object OutputPath | ForEach-Object {
+# @"
+#       <li>
+#         <a href="$($_.OutputHref)">$($_.Name)</a><br>
+#         <small>Output: <code>$($_.OutputPath -replace '\\','/')</code></small><br>
+#         <small>Source: <code>$($_.Source)</code></small>
+#       </li>
+# "@
+# }) -join "`n"
+#
+# $indexHtml = @"
+# <!doctype html>
+# <html lang="en">
+# <head>
+#   <meta charset="utf-8">
+#   <meta name="viewport" content="width=device-width, initial-scale=1">
+#   <title>Generated Math Content</title>
+# </head>
+# <body>
+#   <main>
+#     <h1>Generated Math Content</h1>
+#     <p>Auto-generated by build.ps1 (tex4ht / make4ht workflow).</p>
+#
+#     <h2>Available Files</h2>
+#     <ul>
+# $listItems
+#     </ul>
+#
+#     <p><a href="../index.html">Return to Main Homepage</a></p>
+#   </main>
+# </body>
+# </html>
+# "@
+#
+# Set-Content -Path (Join-Path $SiteDirAbs "index.html") -Value $indexHtml -Encoding UTF8
 
 Write-Step "Build complete."
-Write-Step "Generated index: $(Join-Path $SiteDirAbs 'index.html')"
-Write-Step "Generated pages root: $PagesOutputDir"
+# Write-Step "Generated index: $(Join-Path $SiteDirAbs 'index.html')"
+Write-Step "Generated pages root: $SiteDirAbs"
+
+# Clean build-temp after successful build
+# Site output is preserved and accumulates across builds
+Write-Step "Clean flag: $Clean"
+if ($Clean) {
+    Write-Step "Cleaning build-temp: $BuildTempDir"
+    Get-ChildItem -Path $BuildTempDir -ErrorAction SilentlyContinue |
+        Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+    Write-Step "build-temp cleaned"
+} else {
+    Write-Step "Skipping build-temp cleanup (-Clean was false)"
+}

@@ -30,3 +30,7 @@ site/**/build-temp/
 
 # Keep selected HTML/CSS outputs only when intentionally copied into tracked folders
 # (Do not globally ignore *.html or *.css, since project docs/checklists/site outputs use them)
+
+# Unlicensed derivative content (cambridge-maths-notes)
+# Keep the rest of site/ published
+site/cambridge-maths-notes/
